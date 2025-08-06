@@ -1,0 +1,1 @@
+This is a Pokemon/Persona mashup roguelite built in Godot 4.

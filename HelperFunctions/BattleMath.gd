@@ -74,6 +74,7 @@ func STAB(	user_inheritance:Elements, skill_type:Elements, user_trait:Abilities)
 			return DamageMods["None"]
 				
 #endregion
+
 ##this function calculates the base crit chance (c1) of a move
 ##by using the user and target's level and luck
 func BaseCrit(user_lv:int, target_lv:int, user_lu, target_lu):

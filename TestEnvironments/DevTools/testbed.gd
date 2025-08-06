@@ -21,3 +21,4 @@ var AuxFunctions := AuxiliaryFunctions.new()
 
 func _ready():
 	var bud = demon.new(Race.Jack_Frost, Debug.VERBOSE)
+	

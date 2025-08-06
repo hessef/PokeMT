@@ -225,5 +225,12 @@ func _init(race:Race, debug:=Debug.NONE):
 		
 		if debug == Debug.VERBOSE:
 			print("Skill %s learned at level %d" % [Skill.keys()[learnset[int(skill_levels[h])]], int(skill_levels[h])])
-		
+
+func GetData():
+	var output = {	"ID": Race.keys()[ID],
+					"Display Name": disp_name,
+					"Arcana": Arcana.keys()[arcana]
+	}
+	
+	return output
 #endregion
