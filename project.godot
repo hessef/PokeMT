@@ -1,0 +1,33 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="PokeMT"
+run/main_scene="uid://c0l1su15jo4w2"
+config/features=PackedStringArray("4.4", "Mobile")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Enums="*res://Enumerations/Enums.gd"
+Traits="*res://Enumerations/Traits.gd"
+Skills="*res://Enumerations/Skills.gd"
+Demons="*res://Enumerations/Demons.gd"
+Balance="*res://Enumerations/Balance.gd"
+AuxFunc="*res://HelperFunctions/AuxiliaryFunctions.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-sqlite/plugin.cfg")
+
+[rendering]
+
+renderer/rendering_method="mobile"
