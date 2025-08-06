@@ -226,10 +226,105 @@ func _init(race:Race, debug:=Debug.NONE):
 		if debug == Debug.VERBOSE:
 			print("Skill %s learned at level %d" % [Skill.keys()[learnset[int(skill_levels[h])]], int(skill_levels[h])])
 
-func GetData():
-	var output = {	"ID": Race.keys()[ID],
+func GetData(as_text:=false):
+	#region LOCAL VARIABLES
+	var id_out
+	var arcana_out
+	var battack_out
+	var mob_out
+	var aff_out
+	var inherit_out
+	var mp_out = []
+	var ls_out = []
+	var ability_out
+	#endregion
+	
+	#set correct value for evolution
+	var evo = "None"
+	if evolve == Race.Arsene:
+		evo = "None"
+	else:
+		evo = Race.keys()[evolve]
+		
+	if not as_text:
+		id_out		= ID
+		arcana_out	= arcana
+		battack_out	= battack
+		mob_out		= mobility
+		aff_out		= {	"Slash": aff[Type.Slash],
+						"Strike": aff[Type.Strike],
+						"Gun": aff[Type.Gun],
+						"Fire": aff[Type.Fire],
+						"Ice": aff[Type.Ice],
+						"Wind":aff[Type.Wind],
+						"Elec": aff[Type.Elec],
+						"Psy": aff[Type.Psy],
+						"Nuke": aff[Type.Nuke],
+						"Bless": aff[Type.Bless],
+						"Curse": aff[Type.Curse]}
+		inherit_out	= inheritance
+		mp_out		= move_pool
+		ls_out		= learnset
+		ability_out	= ability
+	else:
+		id_out		= Race.keys()[ID]
+		arcana_out	= Arcana.keys()[arcana]
+		battack_out	= Type.keys()[battack]
+		mob_out		= Mobility.keys()[mobility]
+		aff_out		= {	"Slash": Affinity.keys()[aff[Type.Slash]],
+						"Strike": Affinity.keys()[aff[Type.Strike]],
+						"Gun": Affinity.keys()[aff[Type.Gun]],
+						"Fire": Affinity.keys()[aff[Type.Fire]],
+						"Ice": Affinity.keys()[aff[Type.Ice]],
+						"Wind": Affinity.keys()[aff[Type.Wind]],
+						"Elec": Affinity.keys()[aff[Type.Elec]],
+						"Psy": Affinity.keys()[aff[Type.Psy]],
+						"Nuke": Affinity.keys()[aff[Type.Nuke]],
+						"Bless": Affinity.keys()[aff[Type.Bless]],
+						"Curse": Affinity.keys()[aff[Type.Curse]]}
+		inherit_out	= Type.keys()[inheritance]
+		for item in move_pool:
+			mp_out.append(disp_name)
+		for i in range(len(learnset)):
+			if learnset[i]:
+				ls_out.append("Learns %s at Lv %d" % [Skill.keys()[learnset[i]], i])
+		ability_out	= Trait.keys()[ability]
+	var output = {	"ID": id_out,
 					"Display Name": disp_name,
-					"Arcana": Arcana.keys()[arcana]
+					"Arcana": arcana_out,
+					"Fake Name": fake_ID,
+					"Background": background,
+					"Evolves Into": evo,
+					"Basic Attack Type": battack_out,
+					"Mobility": mob_out,
+					"Persistent Stats": {	"St": St,
+											"Ma": Ma,
+											"En": En,
+											"Ag": Ag,
+											"Lu": Lu,
+											"MHP": MHP,
+											"MSP": MSP,
+											"Lv": Lv
+										},
+					"Bonus Stats": {	"bSt": bSt,
+										"bMa": bMa,
+										"bEn": bEn,
+										"bAg": bAg,
+										"bLu": bLu,
+										"bMHP": bMHP,
+										"bMSP": bMSP,
+										},
+					"Stat Distribution": {	"rSt": rSt,
+											"rMa": rMa,
+											"rEn": rEn,
+											"rAg": rAg,
+											"rLu": rLu,
+										},
+					"Affinities": aff_out,
+					"Inheritance Type": inherit_out,
+					"Move Pool": mp_out,
+					"Learnset": ls_out,
+					"Trait": ability_out
 	}
 	
 	return output
