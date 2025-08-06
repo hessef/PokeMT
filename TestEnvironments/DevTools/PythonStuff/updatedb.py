@@ -1,6 +1,6 @@
-#============================================================================================
-#this code is meant to update the sqlite databases for PokeMT and should only be used by devs
-#============================================================================================
+# ============================================================================================
+# this code is meant to update the sqlite databases for PokeMT and should only be used by devs
+# ============================================================================================
 
 import sqlite3 as sql
 import sys
