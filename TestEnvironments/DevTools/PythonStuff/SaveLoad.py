@@ -13,25 +13,24 @@ game version: (4 bytes)
 demon ID location: (2 bytes)
 demon name location: (2 bytes)
 demon name size: (1 byte)
+demon Lv location: (2 bytes)
+demon Exp location: (2 bytes)
 
 demon St location: (2 bytes)
 demon Ma location: (2 bytes)
 demon En location: (2 bytes)
 demon Ag location: (2 bytes)
 demon Lu location: (2 bytes)
-demon Lv location: (2 bytes)
 demon HP location: (2 bytes)
 demon SP location: (2 bytes)
-demon Exp location: (2 bytes)
 
-demon bonus stat exist: (1 byte, single bit for each stat)
-demon bSt location: (2 bytes) (only if exist bit is true)
-demon bMa location: (2 bytes) (only if exist bit is true)
-demon bEn location: (2 bytes) (only if exist bit is true)
-demon bAg location: (2 bytes) (only if exist bit is true)
-demon bLu location: (2 bytes) (only if exist bit is true)
-demon bMHP location: (2 bytes) (only if exist bit is true)
-demon bMSP location: (2 bytes) (only if exist bit is true)
+demon bSt location: (2 bytes)
+demon bMa location: (2 bytes)
+demon bEn location: (2 bytes)
+demon bAg location: (2 bytes)
+demon bLu location: (2 bytes)
+demon bMHP location: (2 bytes)
+demon bMSP location: (2 bytes)
 
 demon movepool location: (2 bytes)
 demon movepool size: (1 byte)
@@ -42,7 +41,6 @@ demon item location: (2 bytes)
 test_data = {   "Version":[0,0,0,1],
                 "ID":1, #1 = Arsene
                 "Name": "pookie",
-                "Arcana":0, #0 = Fool
                 "Level":1,
                 "Exp": 0,
                 "Skills": [151, 2], #151 = Eiha, 2 = Cleave
@@ -65,23 +63,33 @@ test_data = {   "Version":[0,0,0,1],
 defaults = {    "id_loc": 40,
                 "name_loc": 42,
                 "name_size": 0,
-                "st_loc":42, #since name size is 0 by default, the next byte technically has the same location
-                "ma_loc":43, #max 99, so stats only take up 1 byte
-                "en_loc":44,
-                "ag_loc":45,
-                "lu_loc":46,
-                "mhp_loc":47, #not capped at 99, so back to 2 bytes
-                "msp_loc":49,
-                "mvp_loc":51,
+                "lv_loc":42, #since name size is 0 by default, the next byte technically has the same location
+                "exp_loc":43, #4 bytes
+                "st_loc":47, #max 99, so stats only take up 1 byte
+                "ma_loc":48, 
+                "en_loc":49,
+                "ag_loc":50,
+                "lu_loc":51,
+                "mhp_loc":53, #not capped at 99, so back to 2 bytes
+                "msp_loc":55,
+                "bst_loc":57, #max 99, so stats only take up 1 byte
+                "bma_loc":58, 
+                "ben_loc":59,
+                "bag_loc":60,
+                "blu_loc":61,
+                "bmhp_loc":62, #not capped at 99, so back to 2 bytes
+                "bmsp_loc":64,
+                "mvp_loc":66,
                 "mvp_size":1,
-                "trait_loc":53,
-                "item_loc":55
+                "trait_loc":68,
+                "item_loc":70
 
 }
 
 def WriteDmn(data):
     offset = 0 #number of bytes to offset data by
 
+    #region HEADER
     magic_numbers = 'DEMON'.encode('utf-8')
 
     output_buffer = BytesIO()
@@ -91,7 +99,7 @@ def WriteDmn(data):
 
     #game version
     for val in data["Version"]:
-        output_buffer.write(val.to_bytes(1))
+        output_buffer.write(val.to_bytes(1, byteorder='big'))
 
     #ID location
     output_buffer.write(defaults["id_loc"].to_bytes(2, byteorder='big'))
@@ -101,25 +109,67 @@ def WriteDmn(data):
     output_buffer.write(len(data["Name"]).to_bytes(1, byteorder='big'))
     offset += len(data["Name"])
 
-    print(offset)
+    #level and exp locations
+    output_buffer.write((defaults["lv_loc"]+offset).to_bytes(2, byteorder='big'))
+    output_buffer.write((defaults["exp_loc"]+offset).to_bytes(2, byteorder='big'))
 
-    #check if bonus stats exist
-    bstat_exist = 0
-    if not all(value == 0 for value in data["bStats"].values()):
-        place = 7
-        for value in data["bStats"].values():
-            if value != 0:
-                bstat_exist += 2^place
-                offset += 2
-            place -= 1
-        
+    #stat locations
+    output_buffer.write((defaults["st_loc"]+offset).to_bytes(2, byteorder='big'))
+    output_buffer.write((defaults["ma_loc"]+offset).to_bytes(2, byteorder='big'))
+    output_buffer.write((defaults["en_loc"]+offset).to_bytes(2, byteorder='big'))
+    output_buffer.write((defaults["ag_loc"]+offset).to_bytes(2, byteorder='big'))
+    output_buffer.write((defaults["lu_loc"]+offset).to_bytes(2, byteorder='big'))
+    output_buffer.write((defaults["mhp_loc"]+offset).to_bytes(2, byteorder='big'))
+    output_buffer.write((defaults["msp_loc"]+offset).to_bytes(2, byteorder='big'))
 
+    #write bonus stat locations
+    output_buffer.write((defaults["bst_loc"]+offset).to_bytes(2, byteorder='big'))
+    output_buffer.write((defaults["bma_loc"]+offset).to_bytes(2, byteorder='big'))
+    output_buffer.write((defaults["ben_loc"]+offset).to_bytes(2, byteorder='big'))
+    output_buffer.write((defaults["bag_loc"]+offset).to_bytes(2, byteorder='big'))
+    output_buffer.write((defaults["blu_loc"]+offset).to_bytes(2, byteorder='big'))
+    output_buffer.write((defaults["bmhp_loc"]+offset).to_bytes(2, byteorder='big'))
+    output_buffer.write((defaults["bmsp_loc"]+offset).to_bytes(2, byteorder='big'))
 
-    with open("test.dmn", "wb") as binary_file:
+    #write movepool location and size
+    output_buffer.write((defaults["mvp_loc"]+offset).to_bytes(2, byteorder='big'))
+    output_buffer.write((len(data["Skills"])).to_bytes(1, byteorder='big'))
+    #increment offset for movepool size
+    offset += (len(data["Skills"])*2)
+    
+    #write demon trait location
+    output_buffer.write((defaults["trait_loc"]+offset).to_bytes(2, byteorder='big'))
+
+    #write demon item location
+    output_buffer.write((defaults["item_loc"]+offset).to_bytes(2, byteorder='big'))
+    #endregion
+    
+    #region DATA
+    #write ID
+    output_buffer.write((data["ID"]).to_bytes(2, byteorder='big'))
+    #write name
+    output_buffer.write((data["Name"]).encode('utf-8'))
+    #endregion
+
+    with open("./TestEnvironments/DevTools/PythonStuff/SaveTest/test.dmn", "wb") as binary_file:
         binary_file.write(output_buffer.getvalue())
 
+def LoadDmn():
+    with open("./TestEnvironments/DevTools/PythonStuff/SaveTest/test.dmn", "rb") as binary_file:
+        #check magic numbers
+        mn = binary_file.read(5)
+        if mn.decode('utf-8') != 'DEMON':
+            return False
+        
+        #check version
+        ver = ""
+        for i in range(3):
+            ver += (str(int.from_bytes(binary_file.read(1))) + ".")
+        ver += str(int.from_bytes(binary_file.read(1)))
+        print(ver)
+
 def main():
-    WriteDmn(test_data)
+    LoadDmn()
 
 if __name__ == "__main__":
     sys.exit(main())

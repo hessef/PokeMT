@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1754519415
+::res://::1754530988
 BattleManager.gd::GDScript/GDScript::502995652202125389::1753026258::0::1::::battle_manager<>Node<><>0<>0<><>::
 icon.svg::CompressedTexture2D/CompressedTexture2D::5957012520055757050::1750531959::1750531967::1::::<><><>0<>0<>0d5325c79f9b754d7247873e6399c337<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 README.txt::TextFile/TextFile::-1::1754441451::0::1::::<><><>0<>0<><>::
@@ -9,7 +9,7 @@ gdsqlite.gdextension::GDExtension/GDExtension::4837341577405836572::1753027262::
 godot-sqlite.gd::GDScript/GDScript::6354497535622739150::1753027262::0::1::::<>EditorPlugin<><>0<>1<><>::
 LICENSE.md::TextFile/TextFile::-1::1753027262::0::1::::<><><>0<>0<><>::
 plugin.cfg::TextFile/TextFile::-1::1753027262::0::1::::<><><>0<>0<><>::
-::res://addons/godot-sqlite/bin/::1754519409
+::res://addons/godot-sqlite/bin/::1754530982
 ::res://addons/godot-sqlite/bin/libgdsqlite.ios.template_debug.xcframework/::1753027262
 ::res://addons/godot-sqlite/bin/libgdsqlite.ios.template_debug.xcframework/ios-arm64/::1753027262
 ::res://addons/godot-sqlite/bin/libgdsqlite.ios.template_debug.xcframework/ios-arm64_x86_64-simulator/::1753027262
@@ -27,7 +27,7 @@ plugin.cfg::TextFile/TextFile::-1::1753027262::0::1::::<><><>0<>0<><>::
 ::res://addons/godot-sqlite/bin/libgodot-cpp.ios.template_release.xcframework/ios-arm64/::1753027262
 ::res://addons/godot-sqlite/bin/libgodot-cpp.ios.template_release.xcframework/ios-arm64_x86_64-simulator/::1753027262
 ::res://Classes/::1754519078
-Demon_Base.gd::GDScript::561504398059683375::1754519078::0::1::::demon<>Node<><>0<>0<><>::
+Demon_Base.gd::GDScript/GDScript::561504398059683375::1754519078::0::1::::demon<>Node<><>0<>0<><>::
 Skill_Base.gd::GDScript/GDScript::8027377459570150590::1754438260::0::1::::skill<>Node<><>0<>0<><>::
 ::res://Classes/DemonClasses/::1754437690
 BattleDemon.gd::GDScript/GDScript::5906215782627045552::1754411735::0::1::::battle_demon<>demon<><>0<>0<><>::
@@ -43,16 +43,16 @@ SupportSkills.gd::GDScript/GDScript::7070818866536579286::1754438312::0::1::::su
 ::res://Enumerations/::1754519135
 Balance.gd::GDScript/GDScript::1243104694871702758::1754437055::0::1::::BalanceEnum<>Node<><>0<>0<><>::
 Demons.gd::GDScript/GDScript::6680246949547466810::1754412929::0::1::::<>Node<><>0<>0<><>::
-Enums.gd::GDScript::8753483533110932241::1754519071::0::1::::Enum<>Node<><>0<>0<><>::
+Enums.gd::GDScript/GDScript::8753483533110932241::1754519071::0::1::::Enum<>Node<><>0<>0<><>::
 HeldItems.gd::GDScript/GDScript::466524350093985825::1753310664::0::1::::Items<>Node<><>0<>0<><>::
-Skills.gd::GDScript::5566842779489750669::1754519071::0::1::::<>Node<><>0<>0<><>::
-Traits.gd::GDScript::6646100509164652140::1754519135::0::1::::<>Node<><>0<>0<><>::
+Skills.gd::GDScript/GDScript::5566842779489750669::1754519071::0::1::::<>Node<><>0<>0<><>::
+Traits.gd::GDScript/GDScript::6646100509164652140::1754519135::0::1::::<>Node<><>0<>0<><>::
 ::res://HelperFunctions/::1754440383
 AuxiliaryFunctions.gd::GDScript/GDScript::1525930725943871562::1754436553::0::1::::AuxiliaryFunctions<>Node<><>0<>0<><>::
 BattleMath.gd::GDScript/GDScript::6816694770768993241::1754440383::0::1::::battle_math<>Node<><>0<>0<><>::
 ::res://Scenes/::1754500177
 BattleHUD.tscn::PackedScene/PackedScene::4173009866706425219::1754500177::0::1::::<><><>0<>0<><>::
 ::res://TestEnvironments/::1754519135
-StatOutputTest.tscn::PackedScene::6551882491741477435::1754519135::0::1::::<><><>0<>0<><>::uid://crpilv17eu1mn::::res://TestEnvironments/DevTools/testbed.gd
+StatOutputTest.tscn::PackedScene/PackedScene::6551882491741477435::1754519135::0::1::::<><><>0<>0<><>::uid://crpilv17eu1mn::::res://TestEnvironments/DevTools/testbed.gd
 ::res://TestEnvironments/DevTools/::1754519071
-testbed.gd::GDScript::5997523899834098157::1754519071::0::1::::testbed<>Node<><>0<>0<><>::
+testbed.gd::GDScript/GDScript::5997523899834098157::1754519071::0::1::::testbed<>Node<><>0<>0<><>::
