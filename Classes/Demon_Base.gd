@@ -22,8 +22,10 @@ var AuxFunctions	:= AuxiliaryFunctions.new()
 #region PROPERTIES
 #region default values constants
 @export var ID			:= Race.Arsene
+@export var UID			:= 12345
 @export var disp_name	:= "Default"
 @export var fake_ID		:= "Default"
+@export var nickname	:= ""
 @export var arcana		:= Arcana.Fool
 @export var background	:= "NULL"
 @export var evolve		:= Race.Arsene
@@ -161,8 +163,8 @@ func _init(race:Race, debug:=Debug.NONE):
 	Ag			= int(data["ag"])
 	Lu			= int(data["lu"])
 	Lv			= int(data["level"])
-	MHP			= int(data["hp"]+(6*Lv)+(6*En)) #MHP increases by 6 for each level and point of En
-	MSP			= int(data["sp"]+(3*Lv)+(3*Ma)) #MSP increases by 3 for each level and point of Ma
+	MHP			= int(data["hp"])+(6*Lv)+(6*En) #MHP increases by 6 for each level and point of En
+	MSP			= int(data["sp"])+(3*Lv)+(3*Ma) #MSP increases by 3 for each level and point of Ma
 	
 	if debug == Debug.VERBOSE:
 		print("St: %d\nMa: %d\nEn: %d\nAg: %d" % [St, Ma, En, Ag])

@@ -25,6 +25,7 @@
 "Mudo","Mudo","Curse","Instakill","Light50","99","1","1","SingleTarget","4",,"Neutral","Instakill","Low25","0","None","None","Low chance of Curse insta-kill to one foe.","Inheritable","Magic","0"
 "Life_Drain","Life Drain","Almighty","NonStandardDamage","30","100","1","1","SingleTarget","3",,"Neutral","None","Low25","0","None","None","Drain 30 HP from one foe.","Inheritable","Magic","0"
 "Spirit_Drain","Spirit Drain","Almighty","NonStandardDamage","10","100","1","1","SingleTarget","3",,"Neutral","None","Low25","0","None","None","Drain 10 SP from one foe.","Inheritable","Magic","0"
+"Rakunda","Rakunda","Debuff","Standard","Minus1","100","1","1","SingleTarget","6",,"Neutral","IceBreak","Guaranteed","0","Raku","None","Negates Ice resistance of all foes. Cannot negate Ice Wall.","Inheritable","Magic","0"
 "Ice_Break","Ice Break","Debuff","Break","Default","100","1","1","MultiTarget","6",,"Neutral","IceBreak","Guaranteed","0","None","None","Negates Ice resistance of all foes. Cannot negate Ice Wall.","Inheritable","Magic","0"
 "Dia","Dia","Recovery","Standard","Light50","100","1","1","SingleTarget","3",,"Neutral","None","Low25","0","None","HP","Restores low amount of HP to one ally.","Inheritable","Magic","0"
 "Baisudi","Baisudi","Recovery","Standard","Light50","100","1","1","SingleTarget","4",,"Neutral","None","Low25","0","None","Baisudi","Cures Burn/Freeze/Shock for one ally.","Inheritable","Magic","0"

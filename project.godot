@@ -23,10 +23,15 @@ Skills="*res://Enumerations/Skills.gd"
 Demons="*res://Enumerations/Demons.gd"
 Balance="*res://Enumerations/Balance.gd"
 AuxFunc="*res://HelperFunctions/AuxiliaryFunctions.gd"
+SaveLoad="*res://HelperFunctions/SaveLoad.gd"
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot-sqlite/plugin.cfg")
+
+[global_group]
+
+Persist=""
 
 [rendering]
 

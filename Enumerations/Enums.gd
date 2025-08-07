@@ -20,6 +20,7 @@ enum ObjectType {	Demon,
 					Trainer
 }
 #endregion
+
 #region Affinities
 #These are for type interactions
 ##Elemental Affinities

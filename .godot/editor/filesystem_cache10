@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1754530988
+::res://::1754583152
 BattleManager.gd::GDScript/GDScript::502995652202125389::1753026258::0::1::::battle_manager<>Node<><>0<>0<><>::
 icon.svg::CompressedTexture2D/CompressedTexture2D::5957012520055757050::1750531959::1750531967::1::::<><><>0<>0<>0d5325c79f9b754d7247873e6399c337<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 README.txt::TextFile/TextFile::-1::1754441451::0::1::::<><><>0<>0<><>::
@@ -9,7 +9,7 @@ gdsqlite.gdextension::GDExtension/GDExtension::4837341577405836572::1753027262::
 godot-sqlite.gd::GDScript/GDScript::6354497535622739150::1753027262::0::1::::<>EditorPlugin<><>0<>1<><>::
 LICENSE.md::TextFile/TextFile::-1::1753027262::0::1::::<><><>0<>0<><>::
 plugin.cfg::TextFile/TextFile::-1::1753027262::0::1::::<><><>0<>0<><>::
-::res://addons/godot-sqlite/bin/::1754530982
+::res://addons/godot-sqlite/bin/::1754583143
 ::res://addons/godot-sqlite/bin/libgdsqlite.ios.template_debug.xcframework/::1753027262
 ::res://addons/godot-sqlite/bin/libgdsqlite.ios.template_debug.xcframework/ios-arm64/::1753027262
 ::res://addons/godot-sqlite/bin/libgdsqlite.ios.template_debug.xcframework/ios-arm64_x86_64-simulator/::1753027262

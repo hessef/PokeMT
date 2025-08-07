@@ -1,0 +1,10 @@
+res://TestEnvironments/StatOutputTest.tscn
+res://Enumerations/Enums.gd
+res://Enumerations/Traits.gd
+res://Enumerations/Skills.gd
+res://TestEnvironments/DevTools/testbed.gd
+res://HelperFunctions/SaveLoad.gd
+res://Scenes/BattleHUD.tscn
+res://Classes/Demon_Base.gd
+res://Classes/Skill_Base.gd
+res://Classes/SkillClasses/SupportSkills.gd

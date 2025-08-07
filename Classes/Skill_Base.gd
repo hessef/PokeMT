@@ -25,6 +25,7 @@ const Power		= BalanceEnum.skill_power
 const CritC		= BalanceEnum.crit_chance #dict
 const Inherit	= Enums.inherit
 const PassEff	= Enums.passive_effects
+const Stages	= BalanceEnum.stat_stages
 #endregion
 
 #region IMPORT FUNCTIONS

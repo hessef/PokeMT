@@ -17,9 +17,13 @@ const CritC		:= BalanceEnum.crit_chance
 var rng := RandomNumberGenerator.new()
 var db := SQLite.new()
 var AuxFunctions := AuxiliaryFunctions.new()
+var SL_Man := save_manager.new()
 #endregion
 
 func _ready():
-	var bud = demon.new(Race.Jack_Frost, Debug.VERBOSE)
-	
-	print(bud.GetData())
+	var bud = demon.new(Race.Jack_Frost)
+	var buddy = demon.new(Race.Jack_o_Lantern)
+
+	var test = SL_Man.Save(bud)
+	if test:
+		print("f")

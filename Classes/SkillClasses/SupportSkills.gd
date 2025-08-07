@@ -8,6 +8,7 @@ class_name support_skill
 @export var condition:	Condition
 @export var cost:		int
 @export var aoe:		AOE
+@export var power:		float
 #endregion
 
 ##constructor class, takes enum as argument
@@ -45,6 +46,7 @@ func _init(id:Name, debug:=Debug.NONE):
 					stat.append(Stats.Eva)
 				_:
 					stat.append(Stats[data['status']])
+			power = Stages[data['power']]
 		Subtype.Break:
 			#if inflicting a break, set that here
 			status		= VStatus[data['ailment']]
