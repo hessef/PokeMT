@@ -30,6 +30,7 @@ func SaveDmn(target):
 							"Race": target.ID,
 							"Name": target.disp_name,
 							"Level": target.Lv,
+							"Exp": target.Exp,
 							"Skills":[],
 							"Trait": target.ability,
 							"St": target.St,
@@ -75,6 +76,8 @@ func LoadDmn(target):
 			output.SP			= data["SP"]
 			output.status		= data["Status"]
 			output.item			= data["Item"]
+			output.Lv			= data["Level"]
+			output.Exp			= data["Exp"]
 			#set moves
 			output.move_pool.clear()
 			for move in data["Skills"]:

@@ -1,3 +1,9 @@
+MenuButton
+HBoxContainer
+VBoxContainer
+MarginContainer
+Control
+Window
 demon
 testbed
 battle_manager

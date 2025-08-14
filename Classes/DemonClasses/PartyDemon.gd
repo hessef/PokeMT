@@ -41,6 +41,7 @@ func _init(base = null, race:=Race.Arsene, debug:=Debug.NONE):
 		HP			= MHP
 		SP			= MSP
 		Lv			= base.Lv
+		Exp			= base.Exp
 		
 		if debug == Debug.VERBOSE:
 			print("St: %d\nMa: %d\nEn: %d\nAg: %d" % [St, Ma, En, Ag])

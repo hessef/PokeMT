@@ -33,7 +33,7 @@ var AuxFunctions	:= AuxiliaryFunctions.new()
 @export var battack		:= Type.Slash
 @export var mobility	:= Mobility.Legged
 @export var item		:= Items.held_items.NONE
-@export var status := NVStatus.None
+@export var status 		:= NVStatus.None
 #endregion
 
 #-----STAT DATA-----
@@ -60,6 +60,8 @@ var AuxFunctions	:= AuxiliaryFunctions.new()
 @export var MSP:	int
 ##the demon's level
 @export var Lv:		int
+##the demon's current exp (reset every level)
+@export var Exp:	int
 ##the demon's current HP
 @export var HP := 0
 ##the demon's current SP
