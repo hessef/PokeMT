@@ -13,6 +13,7 @@ const BAttPwr	:= Balance.BasicAttackPower
 const Debug		:= Enum.debug_level
 const Mobility	:= Enum.mobility
 const OType		:= Enum.ObjectType
+const NVStatus	:= Enum.non_volatile_status
 #endregion
 
 #region IMPORT FUNCTIONS
@@ -31,6 +32,8 @@ var AuxFunctions	:= AuxiliaryFunctions.new()
 @export var evolve		:= Race.Arsene
 @export var battack		:= Type.Slash
 @export var mobility	:= Mobility.Legged
+@export var item		:= Items.held_items.NONE
+@export var status := NVStatus.None
 #endregion
 
 #-----STAT DATA-----
@@ -57,6 +60,10 @@ var AuxFunctions	:= AuxiliaryFunctions.new()
 @export var MSP:	int
 ##the demon's level
 @export var Lv:		int
+##the demon's current HP
+@export var HP := 0
+##the demon's current SP
+@export var SP := 0
 #endregion
 
 #region Persistent Bonus Stat Totals

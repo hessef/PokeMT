@@ -2,7 +2,6 @@ extends demon
 
 class_name party_demon
 
-
 func _init(base = null, race:=Race.Arsene, debug:=Debug.NONE):
 	#if not creating from an existing object, run parent _init function
 	if base == null:
@@ -39,6 +38,8 @@ func _init(base = null, race:=Race.Arsene, debug:=Debug.NONE):
 		Lu			= base.Lu
 		MHP			= base.MHP
 		MSP			= base.MSP
+		HP			= MHP
+		SP			= MSP
 		Lv			= base.Lv
 		
 		if debug == Debug.VERBOSE:

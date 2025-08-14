@@ -23,7 +23,10 @@ var SL_Man := save_manager.new()
 func _ready():
 	var bud = demon.new(Race.Jack_Frost)
 	var buddy = demon.new(Race.Jack_o_Lantern)
+	bud.disp_name = "pookie"
 
-	var test = SL_Man.Save(bud)
+	var test = SL_Man.SaveDmn(bud)
 	if test:
 		print("f")
+	var loaded_guy = SL_Man.LoadDmn("pookie")
+	print(loaded_guy.background)
