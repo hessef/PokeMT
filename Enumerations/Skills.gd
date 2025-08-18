@@ -726,6 +726,10 @@ enum skills {
 				##unique to Raoul
 				Phantom_Show,
 				
+				##ailment, multi target, 10 SP,
+				##medium50 chance to inflict poison
+				Poison_Mist,
+				
 				##end header for ailment skills
 				EndAilment,
 				#endregion

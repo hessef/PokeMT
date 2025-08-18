@@ -21,10 +21,15 @@ var SL_Man := save_manager.new()
 #endregion
 
 func _ready():
-	var button = Button.new()
-	button.text = "TEST"
-	button.pressed.connect(_button_pressed)
-	add_child(button)
+	var d1 = party_demon.new(null, Race.Arsene)
+	var d2 = party_demon.new(null, Race.Zorro)
+	var d3 = party_demon.new(null, Race.Jack_o_Lantern)
+	var d4 = party_demon.new(null, Race.Jack_Frost)
+	var d5 = party_demon.new(null, Race.Io)
 	
+	var party: Array[demon] = [d1,d2,d3,d4]
+	var BUI = battle_ui.new(party, [d5])
+	add_child(BUI)
+
 func _button_pressed():
 	print("TEST")

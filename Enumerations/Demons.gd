@@ -143,6 +143,7 @@ enum demons {
 	#region LOVERS
 	LoversStart,
 	
+	Io,
 	Carmen,
 	Hecate,
 	Celestine,

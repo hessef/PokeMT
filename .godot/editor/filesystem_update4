@@ -3,8 +3,8 @@ res://Enumerations/Enums.gd
 res://Enumerations/Traits.gd
 res://Enumerations/Skills.gd
 res://TestEnvironments/DevTools/testbed.gd
-res://Classes/Demon_Base.gd
-res://Classes/DemonClasses/PartyDemon.gd
-res://HelperFunctions/SaveLoad.gd
-res://UI/BattleMenu.gd
+res://HelperFunctions/BuildBattleUI.gd
 res://Scenes/BattleHUD.tscn
+res://Enumerations/Demons.gd
+res://UI/BattleUI.gd
+res://UI/BattleSlot.gd

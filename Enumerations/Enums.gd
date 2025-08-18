@@ -21,6 +21,16 @@ enum ObjectType {	Demon,
 }
 #endregion
 
+#region MENU TYPES
+##Menu Types
+enum MenuType {	None,
+				Action,
+				Skill,
+				Enemy_Target,
+				Ally_Target
+				}
+#endregion
+
 #region Affinities
 #These are for type interactions
 ##Elemental Affinities

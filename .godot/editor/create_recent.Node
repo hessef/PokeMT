@@ -1,6 +1,8 @@
+VBoxContainer
+PanelContainer
+Panel
 MenuButton
 HBoxContainer
-VBoxContainer
 MarginContainer
 Control
 Window
