@@ -4,6 +4,10 @@ class_name battle_demon
 
 var BattleMath = battle_math.new()
 
+#region ENUMS
+const ATypes = Enums.ActionType
+#endregion
+
 #region SET STATS
 @export var Atk			= 0
 @export var Def			= 0
@@ -13,7 +17,15 @@ var BattleMath = battle_math.new()
 @export var Eva			= 0
 @export var Acc			= 0
 @export var battle_mp	= 0
-		#endregion
+#endregion
+		
+#region ACTION SETTING
+@export var action = {	"Actor": self,
+						"Target": null,
+						"Action": ATypes.None,
+						"Skill": Skill.None
+}
+#endregion
 
 func _init(base=null, data:=Race.Arsene, debug:=Debug.NONE):
 	if base == null:

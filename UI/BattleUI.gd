@@ -1,4 +1,4 @@
-extends Control
+extends Node
 
 class_name battle_ui
 
@@ -13,7 +13,6 @@ var current_menu: bslot = null
 
 func _init(party: Array[demon], enemies: Array[demon]):
 	#set parameters
-	set_anchors_preset(Control.PRESET_FULL_RECT)
 	target = enemies[0]
 	
 	var UI = Control.new()

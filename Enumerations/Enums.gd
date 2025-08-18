@@ -21,6 +21,15 @@ enum ObjectType {	Demon,
 }
 #endregion
 
+#region ACTION TYPES
+##Action Types
+enum ActionType {	None,
+					Basic_Attack,
+					Skill,
+					Guard,
+					Switch}
+#endregion
+
 #region MENU TYPES
 ##Menu Types
 enum MenuType {	None,

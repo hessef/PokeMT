@@ -15,6 +15,7 @@ const mtypes = Enums.MenuType
 @export var parent: battle_ui = null
 #endregion
 
+#TODO: Change logic to work with battle_demon class
 func _init(unit:demon, origin):
 	#set parameters
 	size_flags_horizontal = Control.SIZE_EXPAND_FILL
