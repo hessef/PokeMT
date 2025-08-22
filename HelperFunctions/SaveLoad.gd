@@ -29,6 +29,8 @@ func SaveDmn(target):
 		var save_data := {	"Ver":md.game_version,
 							"Race": target.ID,
 							"Name": target.disp_name,
+							"Nickname": target.nickname,
+							"UID": target.UID,
 							"Level": target.Lv,
 							"Exp": target.Exp,
 							"Skills":[],
@@ -64,6 +66,8 @@ func LoadDmn(target):
 			var output = party_demon.new(null, data["Race"])
 			#set parameters
 			output.disp_name	= data["Name"]
+			output.nickname		= data["Nickname"]
+			output.UID			= data["UID"]
 			output.ability 		= data["Trait"]
 			output.St			= data["St"]
 			output.Ma			= data["Ma"]
