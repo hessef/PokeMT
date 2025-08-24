@@ -1,0 +1,34 @@
+# Godot-specific ignores
+
+# Import cache (built automatically)
+.import/
+
+# Exported binaries and builds
+*.exe
+*.apk
+*.xcodeproj/
+*.xcworkspace/
+*.zip
+*.tar.gz
+*.pck
+
+# Godot project settings
+export_presets.cfg
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Swap and temporary files
+*.tmp
+*.temp
+*.swp
+
+# Godot Mono (C#) related files
+.mono/
+*.csproj
+*.sln
+*.user
+*.dll
+*.mdb

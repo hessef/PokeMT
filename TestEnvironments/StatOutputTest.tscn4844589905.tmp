@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0l1su15jo4w2"]
+
+[ext_resource type="Script" uid="uid://crpilv17eu1mn" path="res://TestEnvironments/DevTools/testbed.gd" id="1_lbrbs"]
+
+[node name="Node" type="Node"]
+
+[node name="testbed" type="Node" parent="."]
+script = ExtResource("1_lbrbs")
+metadata/_custom_type_script = "uid://crpilv17eu1mn"
