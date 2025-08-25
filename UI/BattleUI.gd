@@ -10,11 +10,12 @@ const mtypes = Enum.MenuType
 var current_menu: bslot = null
 @export var EnemyUI = Control.new()
 @export var PartyUI = Control.new()
+@export var BeginUI = Button.new()
+@export var action_set: Array[bool]
 #endregion
 
 func _init(party: Array[battle_demon], enemies: Array[battle_demon]):
-	
-		#region ENEMIES UI
+	#region ENEMIES UI
 	EnemyUI.set_anchors_preset(Control.PRESET_FULL_RECT)
 	add_child(EnemyUI)
 	
@@ -56,7 +57,8 @@ func _init(party: Array[battle_demon], enemies: Array[battle_demon]):
 	
 	var slots: Array[bslot]
 	for i in range(min(4, party.size())):
-		slots.append(bslot.new(party[i], self))
+		action_set.append(false)
+		slots.append(bslot.new(party[i], self, i))
 		PlayerDemonSlots.add_child(slots[i])
 		
 		#bind button press to SwitchMenu
@@ -67,8 +69,21 @@ func _init(party: Array[battle_demon], enemies: Array[battle_demon]):
 		slots[i].add_guys(enemies)
 	#endregion
 	
+	#region BEGIN ROUND
+	BeginUI.set_anchors_preset(Control.PRESET_CENTER_RIGHT)
+	BeginUI.grow_horizontal = Control.GROW_DIRECTION_BEGIN
+	add_child(BeginUI)
+	BeginUI.text = "BEGIN ROUND"
+	BeginUI.pressed.connect(_begin_round)
+	BeginUI.disabled = true #disable button until all actions are set
+	#endregion
+	
 ##this function allows the currently open menu to close when another is selected
 func SwitchMenu(menu:bslot):
 	if current_menu and current_menu != menu:
 		current_menu._lost_focus()
 	current_menu = menu
+
+##this function allows the round to begin
+func _begin_round():
+	print("filler")

@@ -1,3 +1,4 @@
+Button
 VBoxContainer
 Label
 PanelContainer
@@ -8,7 +9,6 @@ Control
 ProgressBar
 Sprite2D
 Node2D
-Button
 Panel
 MenuButton
 Window

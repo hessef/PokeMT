@@ -26,15 +26,17 @@ var AuxFunctions = AuxiliaryFunctions.new()
 @export var using_skill: skill
 @export var using_battack = false
 @export var tied_unit: battle_demon
+@export var action_index: int
 #endregion
 
 #TODO: Change logic to work with battle_demon class
-func _init(unit:demon, origin):
+func _init(unit:demon, origin, index):
 	#set parameters
 	size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	size_flags_vertical = Control.SIZE_SHRINK_END
 	parent = origin
 	tied_unit = unit
+	action_index = index
 	
 	#add vertical box to hold elements
 	var vbox = VBoxContainer.new()
@@ -111,6 +113,10 @@ func _battack():
 	button.text = text
 	button.show()
 	amhidden = true
+	parent.action_set[action_index] = true
+	#if all actions are set, allow the button to be pressed
+	if not false in parent.action_set:
+		parent.BeginUI.disabled = false
 	#TODO: Add logic to set actions
 	
 func _bskill():
@@ -126,6 +132,10 @@ func _skill_used(used_skill: skill):
 	button.text = text
 	button.show()
 	amhidden = true
+	parent.action_set[action_index] = true
+	#if all actions are set, allow the button to be pressed
+	if not false in parent.action_set:
+		parent.BeginUI.disabled = false
 	#TODO: Add logic to set actions
 	
 func _select_ally(used_skill:skill):
@@ -183,6 +193,10 @@ func _bguard():
 	button.text = text
 	button.show()
 	amhidden = true
+	parent.action_set[action_index] = true
+	#if all actions are set, allow the button to be pressed
+	if not false in parent.action_set:
+		parent.BeginUI.disabled = false
 	#TODO: Add logic to set actions
 	
 func populate_menu(data:Array[skill]):
