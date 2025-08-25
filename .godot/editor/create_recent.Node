@@ -1,4 +1,6 @@
+Label
 ProgressBar
+HBoxContainer
 Sprite2D
 Node2D
 Button
@@ -6,10 +8,7 @@ VBoxContainer
 PanelContainer
 Panel
 MenuButton
-HBoxContainer
 MarginContainer
 Control
 Window
 demon
-testbed
-battle_manager

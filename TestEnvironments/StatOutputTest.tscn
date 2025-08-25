@@ -1,11 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0l1su15jo4w2"]
+[gd_scene load_steps=2 format=3 uid="uid://c0l1su15jo4w2"]
 
 [ext_resource type="Script" uid="uid://crpilv17eu1mn" path="res://TestEnvironments/DevTools/testbed.gd" id="1_lbrbs"]
-
-[sub_resource type="Theme" id="Theme_lbrbs"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lbrbs"]
-bg_color = Color(0.493738, 0.669035, 0.119261, 1)
 
 [node name="Node" type="Node"]
 
@@ -13,75 +8,25 @@ bg_color = Color(0.493738, 0.669035, 0.119261, 1)
 script = ExtResource("1_lbrbs")
 metadata/_custom_type_script = "uid://crpilv17eu1mn"
 
-[node name="Control" type="Control" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 visible = false
-layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer"]
+[node name="Label" type="Label" parent="HBoxContainer"]
 layout_mode = 2
+text = "H"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/HBoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer"]
+layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 3
-alignment = 2
+value = 50.0
 
-[node name="MenuButton" type="MenuButton" parent="Control/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="HBoxContainer"]
 layout_mode = 2
-text = "Slot1"
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 2
-
-[node name="MenuButton" type="MenuButton" parent="Control/MarginContainer/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-text = "Slot2"
-item_count = 1
-popup/item_0/id = 0
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="Control/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 2
-
-[node name="MenuButton" type="MenuButton" parent="Control/MarginContainer/HBoxContainer/VBoxContainer3"]
-layout_mode = 2
-text = "Slot3"
-
-[node name="VBoxContainer4" type="VBoxContainer" parent="Control/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = SubResource("Theme_lbrbs")
-alignment = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="Control/MarginContainer/HBoxContainer/VBoxContainer4"]
-layout_mode = 2
-
-[node name="MenuButton" type="MenuButton" parent="Control/MarginContainer/HBoxContainer/VBoxContainer4/PanelContainer"]
-layout_mode = 2
-text = "Slot4"
-switch_on_hover = true
-
-[node name="Button" type="Button" parent="Control/MarginContainer/HBoxContainer/VBoxContainer4"]
-layout_mode = 2
-
-[node name="ProgressBar" type="ProgressBar" parent="."]
-visible = false
-offset_right = 4.0
-offset_bottom = 27.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_lbrbs")
-show_percentage = false
+text = "HH"

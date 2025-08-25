@@ -177,7 +177,9 @@ func _init(race:Race, debug:=Debug.NONE):
 	Lu			= int(data["lu"])
 	Lv			= int(data["level"])
 	MHP			= int(data["hp"])+(6*Lv)+(6*En) #MHP increases by 6 for each level and point of En
+	HP			= MHP
 	MSP			= int(data["sp"])+(3*Lv)+(3*Ma) #MSP increases by 3 for each level and point of Ma
+	SP			= MSP
 	
 	if debug == Debug.VERBOSE:
 		print("St: %d\nMa: %d\nEn: %d\nAg: %d" % [St, Ma, En, Ag])

@@ -3,5 +3,5 @@ res://Enumerations/Enums.gd
 res://Enumerations/Traits.gd
 res://Enumerations/Skills.gd
 res://TestEnvironments/DevTools/testbed.gd
-res://UI/BattleSlot.gd
 res://Scenes/BattleHUD.tscn
+res://UI/DemonData.gd

@@ -55,7 +55,9 @@ func _init(base=null, data:=Race.Arsene, debug:=Debug.NONE):
 		Eva	= BattleMath.GenerateAccEva(base.Ag, base.bAg, base.Lu, base.bLu)
 		Acc	= Eva
 		MHP	= base.MHP
+		HP	= base.HP
 		MSP	= base.MSP
+		SP	= base.SP
 		#endregion
 
 		#region CREATE SKILL LIST
