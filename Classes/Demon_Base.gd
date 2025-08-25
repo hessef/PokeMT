@@ -14,6 +14,7 @@ const Debug		:= Enum.debug_level
 const Mobility	:= Enum.mobility
 const OType		:= Enum.ObjectType
 const NVStatus	:= Enum.non_volatile_status
+const Teams		:= Enum.Team
 #endregion
 
 #region IMPORT FUNCTIONS
@@ -34,6 +35,7 @@ var AuxFunctions	:= AuxiliaryFunctions.new()
 @export var mobility	:= Mobility.Legged
 @export var item		:= Items.held_items.NONE
 @export var status 		:= NVStatus.None
+@export var team		:= Teams.AI
 #endregion
 
 #-----STAT DATA-----
@@ -148,11 +150,13 @@ func _init(race:Race, debug:=Debug.NONE):
 	
 	ID 			= Race[data["id"]]
 	disp_name	= data["name"]
+	nickname	= disp_name
 	fake_ID		= data["fakename"]
 	arcana		= Arcana[data["arcana"]]
 	background	= data["background"]
 	evolve		= Race[data["evolve"]]
 	inheritance	= Type[data["inheritance"]]
+	battack		= Type[data["battack"]]
 
 	if debug == Debug.VERBOSE:
 		print("ID: %s\nDisplay Name: %s\nFake Name: %s" % [Race.keys()[ID], disp_name, fake_ID])

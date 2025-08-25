@@ -11,7 +11,6 @@ class_name physical_skill
 @export var cost:		int
 @export var accuracy:	int
 @export var hit_count	= [1,1] #default of just 1 hit
-@export var aoe:		AOE
 #endregion
 
 ##constructor class, takes enum as argument

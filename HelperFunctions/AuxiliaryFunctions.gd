@@ -11,6 +11,7 @@ const Skill		= Skills.skills
 const Arcana	= Enums.arcana
 const Category	= Enums.skill_category
 const PassType	= Enums.passive_types
+const Affinity	= Enums.affinity
 #endregion
 
 #region IMPORT FUNCTIONS
@@ -144,3 +145,15 @@ func BuildSkill(id:Skill):
 			return support_skill.new(id)
 		Category.Passive:
 			return passive_skill.new(id)
+
+##this function returns the correct image to use for elemental affinity
+func GetAffinityIcon(skill_type:Type, target: demon):
+	var output = null
+	#if skill type doesn't have elemental effects, return null
+	if (skill_type >= Type.Almighty):
+		return output
+		
+	#find relation
+	output = load("res://UI/Assets/Icons/%s.png" % [Affinity.keys()[target.aff[skill_type]]])
+	
+	return output

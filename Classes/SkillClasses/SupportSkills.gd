@@ -7,7 +7,6 @@ class_name support_skill
 @export var status:		VStatus
 @export var condition:	Condition
 @export var cost:		int
-@export var aoe:		AOE
 @export var power:		float
 #endregion
 

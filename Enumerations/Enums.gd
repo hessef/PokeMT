@@ -9,6 +9,12 @@ enum debug_level {	NONE,
 }
 #endregion
 
+#region TEAM
+##Teams
+enum Team {	Player,
+			AI}
+#endregion
+
 #region OBJECT TYPES
 ##Object Types
 enum ObjectType {	Demon,
@@ -310,7 +316,7 @@ enum non_volatile_status {	None, 		#no non-valatile status
 							Toxic, 		#take 1/16 HP damage at the end of each turn, then 2/16, then 3/16, etc.
 										#change to normal poison when leaving the field
 										#TECHNICALS: Psy, Fire
-							Paralysis,	#50% chance to not move and halve speed. 10% chance to transfer to attacker
+							Paralyze,	#50% chance to not move and halve speed. 10% chance to transfer to attacker
 										#when hit with a melee attack
 										#TECHNICALS: Strike, Slash, Gun, Nuke
 							Sleep,		#cannot act, recovers 10% HP and SP per turn, removed when hit

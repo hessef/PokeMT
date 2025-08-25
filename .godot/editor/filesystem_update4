@@ -3,4 +3,4 @@ res://Enumerations/Enums.gd
 res://Enumerations/Traits.gd
 res://Enumerations/Skills.gd
 res://TestEnvironments/DevTools/testbed.gd
-res://HelperFunctions/SaveLoad.gd
+res://Scenes/BattleHUD.tscn

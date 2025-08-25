@@ -7,7 +7,6 @@ class_name ailment_skill
 @export var ail_chance	= AilChance
 @export var condition:	Condition
 @export var cost:		int
-@export var aoe:		AOE
 #endregion
 
 ##constructor class, takes enum as argument

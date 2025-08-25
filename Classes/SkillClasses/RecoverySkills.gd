@@ -6,7 +6,6 @@ class_name recovery_skill
 @export var power:	int
 @export var effect:	Effects
 @export var cost:	int
-@export var aoe:	AOE
 #endregion
 
 ##constructor class, takes enum as argument

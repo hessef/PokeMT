@@ -1,3 +1,7 @@
+ProgressBar
+Sprite2D
+Node2D
+Button
 VBoxContainer
 PanelContainer
 Panel
@@ -9,6 +13,3 @@ Window
 demon
 testbed
 battle_manager
-Node
-CanvasLayer
-Node2D

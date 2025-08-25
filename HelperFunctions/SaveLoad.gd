@@ -45,7 +45,8 @@ func SaveDmn(target):
 							"HP": target.HP,
 							"SP": target.SP,
 							"Item": target.item,
-							"Status": target.status}
+							"Status": target.status,
+							"Team": target.team}
 		#add moves
 		for move in target.move_pool:
 			save_data["Skills"].append(move.ID)
@@ -82,6 +83,7 @@ func LoadDmn(target):
 			output.item			= data["Item"]
 			output.Lv			= data["Level"]
 			output.Exp			= data["Exp"]
+			output.team			= data["Team"]
 			#set moves
 			output.move_pool.clear()
 			for move in data["Skills"]:

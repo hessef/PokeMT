@@ -14,10 +14,12 @@ func _init(base = null, race:=Race.Arsene, debug:=Debug.NONE):
 		ID 			= base.ID
 		disp_name	= base.disp_name
 		fake_ID		= base.fake_ID
+		nickname	= base.nickname
 		arcana		= base.arcana
 		background	= base.background
 		evolve		= base.evolve
 		inheritance	= base.inheritance
+		battack		= base.battack
 
 		if debug == Debug.VERBOSE:
 			print("ID: %s\nDisplay Name: %s\nFake Name: %s" % [Race.keys()[ID], disp_name, fake_ID])

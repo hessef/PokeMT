@@ -41,6 +41,7 @@ var AuxFunctions	:= AuxiliaryFunctions.new()
 @export var inheritable	:= Subtype.Standard
 @export var scaling		:= Scaling.Strength
 @export var priority	:= 0
+@export var aoe			: AOE
 #endregion
 
 #region METHODS

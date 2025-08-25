@@ -1,8 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0l1su15jo4w2"]
+[gd_scene load_steps=4 format=3 uid="uid://c0l1su15jo4w2"]
 
 [ext_resource type="Script" uid="uid://crpilv17eu1mn" path="res://TestEnvironments/DevTools/testbed.gd" id="1_lbrbs"]
 
 [sub_resource type="Theme" id="Theme_lbrbs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lbrbs"]
+bg_color = Color(0.493738, 0.669035, 0.119261, 1)
 
 [node name="Node" type="Node"]
 
@@ -72,3 +75,13 @@ layout_mode = 2
 layout_mode = 2
 text = "Slot4"
 switch_on_hover = true
+
+[node name="Button" type="Button" parent="Control/MarginContainer/HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+offset_right = 4.0
+offset_bottom = 27.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_lbrbs")
+show_percentage = false
