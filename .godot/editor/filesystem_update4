@@ -5,3 +5,7 @@ res://Enumerations/Skills.gd
 res://TestEnvironments/DevTools/testbed.gd
 res://UI/DemonData.gd
 res://Scenes/BattleHUD.tscn
+res://UI/BattleUI.gd
+res://Classes/DemonClasses/BattleDemon.gd
+res://CombatSystems/ActionNode.gd
+res://CombatSystems/BattleManager.gd

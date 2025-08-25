@@ -6,26 +6,35 @@ var BattleMath = battle_math.new()
 
 #region ENUMS
 const ATypes = Enums.ActionType
+const Stages = BalanceEnum.stat_stages
 #endregion
 
 #region VARIABLES
 @export var Atk			= 0
+@export var Atk_stages	= Stages["Normal"]
 @export var Def			= 0
+@export var Def_stages	= Stages["Normal"]
 @export var SpA			= 0
+@export var SpA_stages	= Stages["Normal"]
 @export var SpD			= 0
+@export var SpD_stages	= Stages["Normal"]
 @export var Spe			= 0
+@export var Spe_stages	= Stages["Normal"]
 @export var Eva			= 0
+@export var Eva_stages	= Stages["Normal"]
 @export var Acc			= 0
+@export var Acc_stages	= Stages["Normal"]
 @export var battle_sp	= 0
 @export var sprite_texture: CompressedTexture2D
 @export var sprite: Sprite2D
+@export var ui_data: DemonData
 #endregion
 		
 #region ACTION SETTING
 @export var action = {	"Actor": self,
 						"Target": null,
 						"Action": ATypes.None,
-						"Skill": Skill.None
+						"Skill": skill
 }
 #endregion
 

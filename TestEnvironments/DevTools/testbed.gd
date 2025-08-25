@@ -35,10 +35,8 @@ func _ready():
 	
 	var party: Array[battle_demon] = [d1,d2,d3,d4]
 	var enemies: Array[battle_demon] = [d5,d6]
-	var drawing = DrawUnits.new(party, enemies, "SIM")
-	var BUI = battle_ui.new(party, enemies)
-	add_child(drawing)
-	add_child(BUI)
+	var battle = battle_manager.new(party, enemies)
+	add_child(battle)
 
 func _button_pressed():
 	print("TEST")

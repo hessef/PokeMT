@@ -8,15 +8,13 @@ const mtypes = Enum.MenuType
 
 #region GLOBAL VARIABLES
 var current_menu: bslot = null
-@export var target: demon = null
+@export var EnemyUI = Control.new()
+@export var PartyUI = Control.new()
 #endregion
 
 func _init(party: Array[battle_demon], enemies: Array[battle_demon]):
-	#set parameters
-	target = enemies[0]
 	
 		#region ENEMIES UI
-	var EnemyUI = Control.new()
 	EnemyUI.set_anchors_preset(Control.PRESET_FULL_RECT)
 	add_child(EnemyUI)
 	
@@ -24,19 +22,22 @@ func _init(party: Array[battle_demon], enemies: Array[battle_demon]):
 	var MC2 = MarginContainer.new()
 	MC2.custom_minimum_size = Vector2(0,0)
 	MC2.layout_direction = Control.LAYOUT_DIRECTION_LTR
-	MC2.set_anchors_preset(Control.PRESET_FULL_RECT)
-	MC2.anchor_right = 1
-	MC2.anchor_top = 1
+	MC2.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	EnemyUI.add_child(MC2)
 	
 	#add horizontal box to hold information
 	var EnemyDemonSlots = HBoxContainer.new()
+	EnemyDemonSlots.set_anchors_preset(Control.PRESET_FULL_RECT)
 	MC2.add_child(EnemyDemonSlots)
+	for i in range(len(enemies)):
+		var enemy_data = DemonData.new(enemies[i])
+		enemy_data.sp_hbox.hide()
+		enemy_data.health_data.hide()
+		EnemyDemonSlots.add_child(enemy_data)
 	#endregion
 	
 	#region PARTY UI
 	#add and set up Party UI
-	var PartyUI = Control.new()
 	PartyUI.set_anchors_preset(Control.PRESET_FULL_RECT)
 	add_child(PartyUI)
 	

@@ -7,13 +7,19 @@ class_name DemonData
 @export var label = Label.new()
 @export var health_bar = ProgressBar.new()
 @export var health_data = Label.new()
+@export var health_hbox = HBoxContainer.new()
+@export var hp_label = Label.new()
 @export var sp_bar = ProgressBar.new()
 @export var sp_data = Label.new()
+@export var sp_hbox = HBoxContainer.new()
 @export var tied_unit: battle_demon
 #endregion
 	
 func _init(unit:battle_demon):
+	size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	size_flags_vertical = Control.SIZE_SHRINK_END
 	tied_unit = unit
+	tied_unit.ui_data = self
 	
 	#add vertical box to hold elements
 	vbox.alignment = BoxContainer.ALIGNMENT_END
@@ -26,9 +32,7 @@ func _init(unit:battle_demon):
 
 	#region HP BAR
 	#create container and label
-	var health_hbox = HBoxContainer.new()
 	health_hbox.set_anchors_preset(PRESET_FULL_RECT)
-	var hp_label = Label.new()
 	hp_label.text = "HP"
 	health_hbox.add_child(hp_label)
 	
@@ -53,7 +57,6 @@ func _init(unit:battle_demon):
 	
 	#region SP BAR
 	#create container and label
-	var sp_hbox = HBoxContainer.new()
 	sp_hbox.set_anchors_preset(PRESET_FULL_RECT)
 	var sp_label = Label.new()
 	sp_label.text = "SP"
