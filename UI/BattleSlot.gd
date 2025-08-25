@@ -25,6 +25,7 @@ var AuxFunctions = AuxiliaryFunctions.new()
 @export var current_target: demon
 @export var using_skill: skill
 @export var using_battack = false
+@export var tied_unit: battle_demon
 #endregion
 
 #TODO: Change logic to work with battle_demon class
@@ -33,6 +34,7 @@ func _init(unit:demon, origin):
 	size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	size_flags_vertical = Control.SIZE_SHRINK_END
 	parent = origin
+	tied_unit = unit
 	
 	#add vertical box to hold elements
 	var vbox = VBoxContainer.new()
@@ -195,7 +197,17 @@ func populate_menu(data:Array[skill]):
 				skill_button.icon = load("res://UI/Assets/Elements/Support.png")
 			else:
 				skill_button.icon = load("res://UI/Assets/Elements/%s.png" % [types.keys()[move.type]])
-			skill_button.text = move.disp_name
+			#add skill name and cost
+			var text = move.disp_name
+			if move.scaling == move.Scaling.Strength:
+				text = "%s    %d HP" % [move.disp_name, move.cost * 0.01 * tied_unit.MHP]
+			elif move.scaling == move.Scaling.Magic:
+				text = "%s    %d SP" % [move.disp_name, move.cost]
+			skill_button.text = text
+			skill_button.alignment = HORIZONTAL_ALIGNMENT_RIGHT
+			
+			#add skill description
+			skill_button.tooltip_text = move.desc
 			
 			#check if enemy or ally target
 			if (move.type == types.Recovery) or (move.type == types.Buff) or (move.type == types.Shield) or (move.type == types.Utility):

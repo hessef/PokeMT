@@ -155,5 +155,4 @@ func GetAffinityIcon(skill_type:Type, target: demon):
 		
 	#find relation
 	output = load("res://UI/Assets/Icons/%s.png" % [Affinity.keys()[target.aff[skill_type]]])
-	
 	return output

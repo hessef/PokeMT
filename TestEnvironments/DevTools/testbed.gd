@@ -22,7 +22,7 @@ var SL_Man := save_manager.new()
 #endregion
 
 func _ready():
-	var d1 = battle_demon.new(party_demon.new(null, Race.Arsene))
+	var d1 = battle_demon.new(party_demon.new(null, Race.Izanagi))
 	var d2 = battle_demon.new(party_demon.new(null, Race.Captain_Kidd))
 	var d3 = battle_demon.new(party_demon.new(null, Race.Jack_o_Lantern))
 	var d4 = battle_demon.new(party_demon.new(null, Race.Jack_Frost))

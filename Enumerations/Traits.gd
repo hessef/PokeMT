@@ -353,6 +353,10 @@ enum traits {
 			
 				#region POKEMON ABILITIES
 				##STAB bonus increased to 2x instead of 1.5x
-				Adaptability
+				Adaptability,
+				
+				##when a stat is lowered by an enemy, increases
+				##attack by 2 stages
+				Defiant
 				#endregion
 			}

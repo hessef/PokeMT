@@ -43,6 +43,7 @@ func _init(base=null, data:=Race.Arsene, debug:=Debug.NONE):
 		evolve		= base.evolve
 		inheritance	= base.inheritance
 		battack		= base.battack
+		aff			= base.aff
 		#endregion
 		
 		#region SET BATTLE STATS
