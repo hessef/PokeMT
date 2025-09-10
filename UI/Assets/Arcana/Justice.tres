@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://c4vmk80atedm1"]
+
+[ext_resource type="Texture2D" uid="uid://ca0kaj5y7qmgo" path="res://UI/Assets/Arcana/ArcanaSheet.png" id="1_anqnq"]
+
+[resource]
+atlas = ExtResource("1_anqnq")
+region = Rect2(4104, 0, 513, 1025)
