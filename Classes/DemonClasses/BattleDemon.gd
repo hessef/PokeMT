@@ -73,9 +73,6 @@ func _init(base=null, data:=Race.Arsene, debug:=Debug.NONE):
 		move_pool	= base.move_pool
 		ability		= base.ability
 		battack		= base.battack
-		for item in move_pool:
-			#LOGIC TO BUILD SKILLS HERE
-			print("TEMP")
 		#endregion
 		
 	#region ORGANIZE PASSIVES

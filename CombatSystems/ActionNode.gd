@@ -2,6 +2,10 @@ extends Node
 
 class_name action_node
 
+#region ENUMS
+const Debug = Enums.debug_level
+#endregion
+
 #region GLOBAL VARIABLES
 @export var unit: battle_demon = null #unit acting
 @export var next_node: action_node = null #next unit in the turn order
@@ -14,3 +18,10 @@ func _init(tied_unit: battle_demon):
 	unit = tied_unit
 	adjusted_Spe = int(float(unit.Spe) * unit.Spe_stages)
 	#priority = unit.action["Skill"].priority
+
+##prints data for debugging
+func debug(debug_level:=Debug.INFO):
+	if debug_level == Debug.INFO:
+		print(unit.disp_name)
+		print(adjusted_Spe)
+		print(priority)

@@ -34,7 +34,6 @@ func _init(input_party:Array[battle_demon], input_enemies:Array[battle_demon]):
 		#set connection for previous node
 		nodes[i+min(4,len(party))-1].next_node = new_node
 		nodes.append(new_node)
-	print(GetTail(nodes[0]).unit.disp_name)
 	
 
 ##this function gets the tail of the linked list
@@ -66,7 +65,7 @@ func Partition(head:action_node, tail:action_node):
 	
 	#traverse the list until you reach the node after the tail
 	while curr != tail.next_node:
-		if ((curr.adjusted_Spe < pivot.adjusted_Spe) and (curr.priority <= pivot.priority)) or curr.priority < pivot.priority:
+		if ((curr.adjusted_Spe > pivot.adjusted_Spe) and (curr.priority >= pivot.priority)) or curr.priority > pivot.priority:
 			#swap data between curr and pre.next
 			Swap(curr, pre.next_node)
 			
