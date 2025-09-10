@@ -57,7 +57,7 @@ const stat_stages = {
 	"Minus3": float(2)/5,
 	"Minus2": float(2)/4,
 	"Minus1": float(2)/3,
-	"Normal": 1,
+	"Normal": float(1),
 	"Plus1": float(3)/2,
 	"Plus2": float(4)/2,
 	"Plus3": float(5)/2,

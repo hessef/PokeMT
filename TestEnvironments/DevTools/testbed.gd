@@ -40,7 +40,7 @@ func _ready():
 	battle.nodes[2].priority = 2
 	var current = battle.QuickSort(battle.nodes[0])
 	while current != null:
-		current.debug()
+		current.debug(Debug.VERBOSE)
 		current = current.next_node
 
 func _button_pressed():

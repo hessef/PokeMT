@@ -3,7 +3,6 @@ res://Enumerations/Enums.gd
 res://Enumerations/Traits.gd
 res://Enumerations/Skills.gd
 res://TestEnvironments/DevTools/testbed.gd
-res://Scenes/BattleHUD.tscn
-res://Classes/DemonClasses/BattleDemon.gd
-res://CombatSystems/BattleManager.gd
 res://CombatSystems/ActionNode.gd
+res://Scenes/BattleHUD.tscn
+res://Enumerations/Balance.gd
