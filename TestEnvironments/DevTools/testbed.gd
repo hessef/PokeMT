@@ -37,11 +37,6 @@ func _ready():
 	var enemies: Array[battle_demon] = [d5,d6]
 	var battle = battle_manager.new(party, enemies)
 	add_child(battle)
-	battle.nodes[2].priority = 2
-	var current = battle.QuickSort(battle.nodes[0])
-	while current != null:
-		current.debug(Debug.VERBOSE)
-		current = current.next_node
 
 func _button_pressed():
 	print("TEST")

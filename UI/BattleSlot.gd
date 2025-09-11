@@ -6,6 +6,7 @@ class_name bslot
 const mtypes = Enums.MenuType
 const types = Enums.type
 const aoes = Enums.aoe
+const ATypes = Enums.ActionType
 #endregion
 
 #region IMPORT FUNCTIONS
@@ -29,8 +30,7 @@ var AuxFunctions = AuxiliaryFunctions.new()
 @export var action_index: int
 #endregion
 
-#TODO: Change logic to work with battle_demon class
-func _init(unit:demon, origin, index):
+func _init(unit:battle_demon, origin, index):
 	#set parameters
 	size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	size_flags_vertical = Control.SIZE_SHRINK_END
@@ -72,7 +72,6 @@ func _init(unit:demon, origin, index):
 	enemy_menu.hide()
 	vbox.add_child(enemy_menu)
 	
-	
 	#add action menu elements
 	var battack = Button.new()
 	battack.text = "Attack"
@@ -87,6 +86,7 @@ func _init(unit:demon, origin, index):
 	action_menu.add_child(bguard)
 	bguard.pressed.connect(_bguard)
 
+#region BUTTON STATES
 func _pressed():
 	if amhidden:
 		action_menu.show()
@@ -106,7 +106,25 @@ func _lost_focus():
 	enemy_menu.hide()
 	button.show()
 	amhidden = true
+#endregion
+
+#region ACTION SETTING
+func _bguard():
+	action_menu.hide()
+	var text = "Guarding"
+	button.text = text
+	button.show()
+	amhidden = true
+	parent.action_set[action_index] = true
+	#if all actions are set, allow the button to be pressed
+	if not false in parent.action_set:
+		parent.BeginUI.disabled = false
 	
+	#set actions
+	tied_unit.action["Target"] = tied_unit
+	tied_unit.action["Action"] = ATypes.Guard
+	tied_unit.action["Skill"] = null
+
 func _battack():
 	action_menu.hide()
 	var text = "Attacking %s" % [current_target.nickname]
@@ -117,12 +135,11 @@ func _battack():
 	#if all actions are set, allow the button to be pressed
 	if not false in parent.action_set:
 		parent.BeginUI.disabled = false
-	#TODO: Add logic to set actions
 	
-func _bskill():
-	action_menu.hide()
-	skill_menu.show()
-	amhidden = true
+	#set actions
+	tied_unit.action["Target"] = current_target
+	tied_unit.action["Action"] = ATypes.Basic_Attack
+	tied_unit.action["Skill"] = null
 	
 func _skill_used(used_skill: skill):
 	skill_menu.hide()
@@ -136,8 +153,18 @@ func _skill_used(used_skill: skill):
 	#if all actions are set, allow the button to be pressed
 	if not false in parent.action_set:
 		parent.BeginUI.disabled = false
-	#TODO: Add logic to set actions
 	
+	#set actions
+	tied_unit.action["Target"] = current_target
+	tied_unit.action["Action"] = ATypes.Skill
+	tied_unit.action["Skill"] = used_skill
+#endregion
+
+func _bskill():
+	action_menu.hide()
+	skill_menu.show()
+	amhidden = true
+
 func _select_ally(used_skill:skill):
 	skill_menu.hide()
 	ally_menu.show()
@@ -158,7 +185,7 @@ func _select_enemy(used_skill:skill):
 		enemy_menu_list[i].icon = icon
 	using_skill = used_skill
 	using_battack = false
-	
+
 func _select_enemy_battack(battack_type:types):
 	action_menu.hide()
 	amhidden = true
@@ -186,18 +213,7 @@ func _back_to_skills():
 		amhidden = false
 	else:
 		skill_menu.show()
-	
-func _bguard():
-	action_menu.hide()
-	var text = "Guarding"
-	button.text = text
-	button.show()
-	amhidden = true
-	parent.action_set[action_index] = true
-	#if all actions are set, allow the button to be pressed
-	if not false in parent.action_set:
-		parent.BeginUI.disabled = false
-	#TODO: Add logic to set actions
+
 	
 func populate_menu(data:Array[skill]):
 	for move in data:

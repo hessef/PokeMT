@@ -12,12 +12,14 @@ var current_menu: bslot = null
 @export var PartyUI = Control.new()
 @export var BeginUI = Button.new()
 @export var action_set: Array[bool]
+@export var parent: battle_manager
 #endregion
 
-func _init(party: Array[battle_demon], enemies: Array[battle_demon]):
+func _init(party: Array[battle_demon], enemies: Array[battle_demon], origin):
 	#region ENEMIES UI
 	EnemyUI.set_anchors_preset(Control.PRESET_FULL_RECT)
 	add_child(EnemyUI)
+	parent = origin
 	
 	#add margin container to hold the UI
 	var MC2 = MarginContainer.new()
@@ -86,4 +88,4 @@ func SwitchMenu(menu:bslot):
 
 ##this function allows the round to begin
 func _begin_round():
-	print("filler")
+	self.parent.SetTurnOrder()

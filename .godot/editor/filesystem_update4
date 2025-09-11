@@ -3,10 +3,7 @@ res://Enumerations/Enums.gd
 res://Enumerations/Traits.gd
 res://Enumerations/Skills.gd
 res://TestEnvironments/DevTools/testbed.gd
-res://UI/Assets/Arcana/Empress.tres
-res://UI/Assets/Arcana/Emperor.tres
-res://UI/Assets/Arcana/Councillor.tres
-res://UI/Assets/Arcana/Back.tres
+res://UI/BattleSlot.gd
 res://Scenes/BattleHUD.tscn
-res://Classes/DemonClasses/BattleDemon.gd
-res://UI/Assets/Arcana/Fool.tres
+res://CombatSystems/BattleManager.gd
+res://UI/BattleUI.gd

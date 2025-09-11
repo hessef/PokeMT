@@ -2,6 +2,10 @@ extends Node
 
 class_name battle_manager
 
+#region ENUMS
+const Debug = Enums.debug_level
+#endregion
+
 #region GLOBAL VARIABLES
 @export var party: Array[battle_demon]
 @export var enemies: Array[battle_demon]
@@ -17,7 +21,7 @@ func _init(input_party:Array[battle_demon], input_enemies:Array[battle_demon]):
 	
 	#create UI
 	drawing = DrawUnits.new(party, enemies, "SIM")
-	BUI = battle_ui.new(party, enemies)
+	BUI = battle_ui.new(party, enemies, self)
 	add_child(drawing)
 	add_child(BUI)
 	
@@ -105,5 +109,8 @@ func QuickSort(head:action_node):
 	return head
 
 ##this function establishes turn order
-func SetTurnOrder(effected_units:Array[battle_demon]):
-	print("filler")
+func SetTurnOrder():#effected_units:Array[battle_demon]):
+	var current = QuickSort(nodes[0])
+	while current != null:
+		current.debug(Debug.VERBOSE)
+		current = current.next_node
