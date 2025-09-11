@@ -18,8 +18,8 @@ const ATypes = Enums.ActionType
 func _init(tied_unit: battle_demon):
 	#set parameters
 	unit = tied_unit
+	unit.node = self
 	adjusted_Spe = int(float(unit.Spe) * unit.Spe_stages)
-	#priority = unit.action["Skill"].priority
 
 ##prints data for debugging
 func debug(debug_level:=Debug.INFO):

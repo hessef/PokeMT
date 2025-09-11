@@ -4,6 +4,7 @@ class_name battle_manager
 
 #region ENUMS
 const Debug = Enums.debug_level
+const ATypes = Enums.ActionType
 #endregion
 
 #region GLOBAL VARIABLES
@@ -110,6 +111,16 @@ func QuickSort(head:action_node):
 
 ##this function establishes turn order
 func SetTurnOrder():#effected_units:Array[battle_demon]):
+	#set priority
+	for guy in nodes:
+		if guy.unit.action["Action"] == ATypes.Skill:
+			guy.priority = guy.unit.action["Skill"].priority
+		elif guy.unit.action["Action"] == ATypes.Guard or guy.unit.action["Action"] == ATypes.Switch:
+			guy.priority = 7
+		else:
+			guy.priority = 0
+
+	#sort turn order
 	var current = QuickSort(nodes[0])
 	while current != null:
 		current.debug(Debug.VERBOSE)

@@ -28,6 +28,7 @@ const Stages = BalanceEnum.stat_stages
 @export var sprite_texture: CompressedTexture2D
 @export var sprite: Sprite2D
 @export var ui_data: DemonData
+@export var node: action_node
 #endregion
 		
 #region ACTION SETTING
