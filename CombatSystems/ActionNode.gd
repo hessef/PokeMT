@@ -13,6 +13,7 @@ const ATypes = Enums.ActionType
 @export var next_node: action_node = null #next unit in the turn order
 @export var adjusted_Spe: int #speed of the unit
 @export var priority: int = 0 #priority level of the action, default 0
+@export var acted := false #boolean for if the unit has had their turn yet
 #endregion
 
 func _init(tied_unit: battle_demon):
@@ -41,3 +42,13 @@ func debug(debug_level:=Debug.INFO):
 			print("Switching To: %s" % [unit.action["Target"].nickname])
 		print("Action Priority: %d" % [priority])
 	print("----------\n")
+
+##handles actions
+func execute_action(debug_level:=Debug.NONE):
+	#output debug infor if needed
+	if debug_level != Debug.NONE:
+		debug(debug_level)
+	
+	if unit.action["Action"] == ATypes.Basic_Attack or unit.action["Action"] == ATypes.Skill:
+		unit.execute_attack(debug_level)
+	acted = true

@@ -9,7 +9,6 @@ class_name physical_skill
 @export var ail_chance	= AilChance
 @export var condition:	Condition
 @export var cost:		int
-@export var accuracy:	int
 @export var hit_count	= [1,1] #default of just 1 hit
 #endregion
 

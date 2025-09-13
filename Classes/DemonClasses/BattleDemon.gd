@@ -2,11 +2,15 @@ extends demon
 
 class_name battle_demon
 
+#region IMPORT FUNCTIONS
 var BattleMath = battle_math.new()
+var RNG = RandomNumberGenerator.new()
+#endregion
 
 #region ENUMS
 const ATypes = Enums.ActionType
 const Stages = BalanceEnum.stat_stages
+const CritC  = BalanceEnum.crit_chance
 #endregion
 
 #region VARIABLES
@@ -54,6 +58,8 @@ func _init(base=null, data:=Race.Arsene, debug:=Debug.NONE):
 		inheritance	= base.inheritance
 		battack		= base.battack
 		aff			= base.aff
+		Lv			= base.Lv
+		Lu			= base.Lu
 		#endregion
 		
 		#region SET BATTLE STATS
@@ -91,3 +97,28 @@ func DrawSprite(origin, location:Vector2, scale = 1.0):
 	sprite.global_position = location
 	sprite.scale = Vector2(scale,scale)
 	origin.add_child(sprite)
+	
+##execute offensive skill
+func execute_attack(debug_level:=Debug.NONE):
+	var accuracy = 1
+	var crit = CritC.DefaultP5
+	if action["Action"] == ATypes.Basic_Attack:
+		accuracy = 95
+	else:
+		accuracy = action["Skill"].accuracy
+		if action["Skill"].type in [Type.Slash, Type.Strike, Type.Gun]:
+			crit = action["Skill"].crit
+	#check if it hits
+	var chance = BattleMath.HitChance(accuracy, 1, item, action["Target"].Eva_stages, Acc_stages, action["Target"].Eva, Acc)
+	var rand = RNG.randi_range(1,100)
+	
+	if debug_level != Debug.NONE:
+		print("Calculated chance: %d" % [chance])
+		print("Generated number: %d" % [rand])
+		
+	if rand > chance:
+		return 0 #attack missed
+		
+	#attack hit, so continue and find crit
+	var crit_chance = BattleMath.BaseCrit(Lv, action["Target"].Lv, Lu, action["Target"].Lu)
+	print(crit_chance)

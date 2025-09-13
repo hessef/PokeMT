@@ -42,6 +42,7 @@ var AuxFunctions	:= AuxiliaryFunctions.new()
 @export var scaling		:= Scaling.Strength
 @export var priority	:= 0
 @export var aoe			: AOE
+@export var accuracy:	int
 #endregion
 
 #region METHODS

@@ -25,15 +25,17 @@ func GenerateAccEva(base_ag:int, bonus_ag:int, base_lu:int, bonus_lu:int):
 	return acc_eva
 	
 ##This function takes the accuracy of a skill, the stages of the
-##user's accuracy, stages of the target's evasion, and the held
-##item of the user to find the hit chance of the skill
+##user's accuracy, stages of the target's evasion, user's accuracy,
+##target's evasion, and the held item of the user to find the hit
+##chance of the skill
 func HitChance(	acc_skill:int, modifier:float, held_item:HeldItem,
-				target_eva_stages:float, user_acc_stages:float):
+				target_eva_stages:float, user_acc_stages:float,
+				target_eva:float, user_acc:float):
 	var micle	= 1
 	if held_item == HeldItem.Micle:
 		micle 	= 1.2
 		
-	var output = acc_skill * modifier * target_eva_stages * user_acc_stages * micle
+	var output = float(acc_skill) * modifier / target_eva_stages * user_acc_stages * micle * (user_acc/target_eva)
 	
 	return output
 #region damage calculations
@@ -77,6 +79,6 @@ func STAB(	user_inheritance:Elements, skill_type:Elements, user_trait:Abilities)
 
 ##this function calculates the base crit chance (c1) of a move
 ##by using the user and target's level and luck
-func BaseCrit(user_lv:int, target_lv:int, user_lu, target_lu):
-	var output = 3 * ((float(user_lv+10)/(target_lv+10))+(min(4,((user_lu+10)/(target_lu+10))))^2)
+func BaseCrit(user_lv:int, target_lv:int, user_lu:int, target_lu:int):
+	var output = 3 * ((float(user_lv+10)/float(target_lv+10))+float(min(4,((user_lu+10)/(target_lu+10))))**2.0)
 	return output

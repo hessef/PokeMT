@@ -109,8 +109,8 @@ func QuickSort(head:action_node):
 	QuickSortHelper(head, tail)
 	return head
 
-##this function establishes turn order
-func SetTurnOrder():#effected_units:Array[battle_demon]):
+##this function establishes turn order when the round begins
+func SetTurnOrder():
 	#set priority
 	for guy in nodes:
 		if guy.unit.action["Action"] == ATypes.Skill:
@@ -123,5 +123,5 @@ func SetTurnOrder():#effected_units:Array[battle_demon]):
 	#sort turn order
 	var current = QuickSort(nodes[0])
 	while current != null:
-		current.debug(Debug.VERBOSE)
+		current.execute_action(Debug.VERBOSE)
 		current = current.next_node
