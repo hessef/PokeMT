@@ -326,7 +326,7 @@ def UpdateSkills(debug=Debug.NONE):
         return False
 
 def main():
-    UpdateDemons(Debug.VERBOSE)
+    UpdateDemons()
     UpdateSkills()
     
         
