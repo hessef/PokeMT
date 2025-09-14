@@ -43,6 +43,7 @@ var AuxFunctions	:= AuxiliaryFunctions.new()
 @export var priority	:= 0
 @export var aoe			: AOE
 @export var accuracy:	int
+@export var source:=	"Persona"
 #endregion
 
 #region METHODS

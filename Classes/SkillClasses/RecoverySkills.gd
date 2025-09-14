@@ -22,6 +22,7 @@ func _init(id:Name, debug:=Debug.NONE):
 	scaling		= Scaling[data['scaling']]
 	disp_name	= data['name']
 	priority	= int(data['priority'])
+	source		= data['source']
 	#endregion
 	
 	#region SET RECOVERY SPECIFIC VALUES

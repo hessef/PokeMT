@@ -130,11 +130,14 @@ func execute_attack(debug_level:=Debug.NONE):
 	#attack hit, so continue and find crit
 	var crit_chance = BattleMath.FullCrit(self, action["Target"], crit)
 	
-	if debug_level != Debug.NONE:
-		print("Calculated crit chance: %d" % [crit_chance])
-	
 	#check if critical
 	rand = RNG.randi_range(1,100)
 	if rand <= crit_chance:
 		crit_mod = crit_mult
+	
+	if debug_level != Debug.NONE:
+		print("Calculated crit chance: %d" % [crit_chance])
+		print("Generated number: %d" % [rand])
 	#endregion
+	
+	var damage = BattleMath.FullDamageCalc(self, action["Target"], crit)

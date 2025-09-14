@@ -12,6 +12,8 @@ const DamageMods	= BalanceEnum.damage_mult #actually a dict
 const Elements		= Enums.type
 const Abilities		= Traits.traits
 const Relate		= Enums.relation
+const Aff			= Enums.affinity
+const ATypes = Enums.ActionType
 #endregion
 
 #region IMPORT CLASSES
@@ -59,7 +61,49 @@ func BaseDamageCalcPersona(	power:int, atk:int, def:int,
 	
 	return output
 	
-
+##calculates the damage done by an attack
+func FullDamageCalc(user:battle_demon, target:battle_demon, crit:float): #TODO: allow for more modifiers
+	#first, find the base power (100 for basic attack)
+	#and determine which formula to use (default persona)
+	var power = BalanceEnum.BasicAttackPower
+	var formula = "Persona"
+	var skill_type = user.battack #default basic attack type
+	if user.action["Action"] == ATypes.Skill:
+		power = user.action["Skill"].power
+		formula = user.action["Skill"].source #only change formula if it's a skill
+		skill_type = user.action["Skill"].type #change to skill type
+		
+	#next, calculate the base damage
+	var base_damage:float = 0.0
+	if formula == "Persona":
+		base_damage = BaseDamageCalcPersona(power, user.Atk, target.Def, user.Atk_stages, target.Def_stages)
+	else:
+		base_damage = BaseDamageCalcPoke(power, user.Atk, target.Def, user.Lv, user.Atk_stages, target.Def_stages)
+	
+	#next, apply conditions like weather and parental bond
+	#TODO: logic for these conditions
+	var PB = 1 #parental bond; 1 normally, 0.25 for second hit
+	var W = 1 #weather; Snow->ice*1.5,fire*0.5; Harsh sunlight->fire*1.5,ice*0.5
+	var GR = 1 #glaive rush; normally 1, 2 if the user used glaive rush last turn as well as this turn
+	var S = 1 #status; normally 1, but 0.5 if user is burned and using strength attack or frostbitten and using magic attack
+	
+	#next, calculate the effect of stab
+	var stab = STAB(user.inheritance, skill_type, user.ability)
+	
+	#next, check type relation
+	var aff = 1.0
+	match target.aff[skill_type]:
+		Aff.Resist:
+			aff = DamageMods.Resist
+		Aff.Weak:
+			aff = DamageMods.Weak
+		Aff.Null:
+			aff = 0
+	
+	#finally, put it all together
+	var output = base_damage * PB * W * GR * crit * stab * aff
+	return output
+	
 ##compares user inheritance type and skill type
 ##matching: STAB, opposite: ISTAB, matching and adaptibility: ADAPTSTAB, else None
 func STAB(	user_inheritance:Elements, skill_type:Elements, user_trait:Abilities):
