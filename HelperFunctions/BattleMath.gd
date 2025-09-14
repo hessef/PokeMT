@@ -77,8 +77,25 @@ func STAB(	user_inheritance:Elements, skill_type:Elements, user_trait:Abilities)
 				
 #endregion
 
+#region CRIT CALCS
 ##this function calculates the base crit chance (c1) of a move
 ##by using the user and target's level and luck
 func BaseCrit(user_lv:int, target_lv:int, user_lu:int, target_lu:int):
 	var output = 3 * ((float(user_lv+10)/float(target_lv+10))+float(min(4,((user_lu+10)/(target_lu+10))))**2.0)
 	return output
+
+##this function calculates the actual crit chance for the move
+func FullCrit(user:battle_demon, target:battle_demon, skill_crit:float):
+	#get the base crit, c1
+	var c1 = BaseCrit(user.Lv, target.Lv, user.Lu, target.Lu)
+	
+	#get the increase from passives and traits
+	var passives:float = 0 #TODO add passive effects
+	var traits:float = 1 #TODO add trait effects
+	
+	#total calculation
+	var output = ((1.0+passives) * c1 + skill_crit) * traits
+	
+	return output
+
+#endregion

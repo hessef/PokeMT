@@ -24,11 +24,12 @@ class Debug(Enum):
 demon_columns = ["ID","Name","Arcana","Level","Skill0","Skill1","Skill2","Skill3","Skill4","Skill5","Skill6","Skill7",
                  "Trait","St","Ma","En","Ag","Lu","HP","SP","Slash","Strike","Gun","Fire","Ice","Elec","Wind",
                  "Psy","Nuke","Bless","Curse","Inheritance","BAttack","LearnLvls","LvlUpSkills","Background",
-                 "FakeName", "Mobility","Evolve"]
+                 "FakeName", "Mobility","Evolve","Ingredients"]
 
 skill_columns = ["name","type","subtype","power","accuracy","hit_min","hit_max","aoe","cost",
                  "trigger_condition","skill_conditions","ailment","ailment_chance",
-                 "crit_chance","status","effect","description","inherit","scaling","priority"]
+                 "crit_chance","status","effect","description","inherit","scaling","priority",
+                 "source"]
 
 def CreateOrConnectToDB(database):
     """
@@ -113,15 +114,15 @@ def CreateCommand(database):
             command1 = "CREATE TABLE IF NOT EXISTS demon(id, name, arcana, level, "
             command2 = "skill0, skill1, skill2, skill3, skill4, skill5, skill6, skill7, trait, "
             command3 = "st, ma, en, ag, lu, hp, sp, "
-            command4 = "slash, strike, gun, fire, ice, elec, wind, psy, nuke, bless, curse, "
-            command5 = "inheritance, battack, learnlvls, lvlupskills, background, fakename, mobility, evolve)"
+            command4 = "slash, strike, gun, fire, ice, elec, wind, psy, nuke, bless, curse, inheritance, "
+            command5 = "battack, learnlvls, lvlupskills, background, fakename, mobility, evolve, ingredients)"
             output = command1 + command2 + command3 + command4 + command5
         
         case db.SKILLS:
             command1 = "CREATE TABLE IF NOT EXISTS skill(id, name, type, subtype, "
-            command2 = "power, accuracy, hit_min, hit_max, aoe, cost, "
-            command3 = "trigger_condition, skill_conditions, ailment, ailment_chance, "
-            command4 = "crit_chance, status, effect, description, inherit, scaling, priority)"
+            command2 = "power, accuracy, hit_min, hit_max, aoe, cost, trigger_condition, "
+            command3 = "skill_conditions, ailment, ailment_chance, crit_chance, "
+            command4 = "status, effect, description, inherit, scaling, priority, source)"
             output = command1 + command2 + command3 + command4
         
         case db.TRAITS:
@@ -164,7 +165,7 @@ def EnterData(database, data, cur, debug=Debug.NONE):
                 data1 = "INSERT INTO demon VALUES(:ID, :Name, :Arcana, :Level, :Skill0, :Skill1, :Skill2, :Skill3, "
                 data2 = ":Skill4, :Skill5, :Skill6, :Skill7, :Trait, :St, :Ma, :En, :Ag, :Lu, :HP, :SP, "
                 data3 = ":Slash, :Strike, :Gun, :Fire, :Ice, :Elec, :Wind, :Psy, :Nuke, :Bless, :Curse, "
-                data4 = ":Inheritance, :BAttack, :LearnLvls, :LvlUpSkills, :Background, :FakeName, :Mobility, :Evolve)"
+                data4 = ":Inheritance, :BAttack, :LearnLvls, :LvlUpSkills, :Background, :FakeName, :Mobility, :Evolve, :Ingredients)"
                 
                 entry = data1+data2+data3+data4
 
@@ -202,7 +203,7 @@ def EnterData(database, data, cur, debug=Debug.NONE):
                 #skill does not exist. Add it.
                 data1 = "INSERT INTO skill VALUES(:id, :name, :type, :subtype, :power, :accuracy, :hit_min, :hit_max, "
                 data2 = ":aoe, :cost, :trigger_condition, :skill_conditions, :ailment, :ailment_chance, "
-                data3 = ":crit_chance, :status, :effect, :description, :inherit, :scaling, :priority)"
+                data3 = ":crit_chance, :status, :effect, :description, :inherit, :scaling, :priority, :source)"
                 
                 entry = data1+data2+data3
 

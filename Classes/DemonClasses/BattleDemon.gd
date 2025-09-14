@@ -33,6 +33,7 @@ const CritC  = BalanceEnum.crit_chance
 @export var sprite: Sprite2D
 @export var ui_data: DemonData
 @export var node: action_node
+@export var crit_mult: float
 #endregion
 		
 #region ACTION SETTING
@@ -60,6 +61,7 @@ func _init(base=null, data:=Race.Arsene, debug:=Debug.NONE):
 		aff			= base.aff
 		Lv			= base.Lv
 		Lu			= base.Lu
+		crit_mult	= 1.5 #TODO change with passives
 		#endregion
 		
 		#region SET BATTLE STATS
@@ -101,24 +103,38 @@ func DrawSprite(origin, location:Vector2, scale = 1.0):
 ##execute offensive skill
 func execute_attack(debug_level:=Debug.NONE):
 	var accuracy = 1
-	var crit = CritC.DefaultP5
+	var crit = CritC.DefaultP5 #skill crit chance (default for basic attack)
+	var crit_mod = 1.0 #holds the multiplier for crit
+	#region CHECK HIT
 	if action["Action"] == ATypes.Basic_Attack:
 		accuracy = 95
 	else:
 		accuracy = action["Skill"].accuracy
 		if action["Skill"].type in [Type.Slash, Type.Strike, Type.Gun]:
 			crit = action["Skill"].crit
+		else:
+			crit = 0
 	#check if it hits
 	var chance = BattleMath.HitChance(accuracy, 1, item, action["Target"].Eva_stages, Acc_stages, action["Target"].Eva, Acc)
 	var rand = RNG.randi_range(1,100)
 	
 	if debug_level != Debug.NONE:
-		print("Calculated chance: %d" % [chance])
+		print("Calculated hit chance: %d" % [chance])
 		print("Generated number: %d" % [rand])
 		
 	if rand > chance:
 		return 0 #attack missed
-		
+	#endregion
+	
+	#region CHECK CRIT
 	#attack hit, so continue and find crit
-	var crit_chance = BattleMath.BaseCrit(Lv, action["Target"].Lv, Lu, action["Target"].Lu)
-	print(crit_chance)
+	var crit_chance = BattleMath.FullCrit(self, action["Target"], crit)
+	
+	if debug_level != Debug.NONE:
+		print("Calculated crit chance: %d" % [crit_chance])
+	
+	#check if critical
+	rand = RNG.randi_range(1,100)
+	if rand <= crit_chance:
+		crit_mod = crit_mult
+	#endregion
