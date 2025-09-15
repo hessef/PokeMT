@@ -169,7 +169,8 @@ func DealDamage(target:battle_demon,damage:float):
 	#change HP amount
 	target.HP = min(target.MHP, max(0, target.HP - damage))
 	if target.HP == 0:
-		print("DEAD")
+		target.ui_data.vbox.hide() #hide the vbox instead of the whole thing so that the spacing isn't thrown off
+		target.sprite.hide()
 	else:
 		print("%s has %d HP left" % [target.disp_name, target.HP])
 	
