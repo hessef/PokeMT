@@ -81,14 +81,14 @@ func _init(unit:battle_demon):
 	vbox.add_child(sp_hbox)
 	#endregion
 
-func update_hp(new_hp:int):
+func update_hp():
 	#sets health bar fill
-	health_bar.value = new_hp
+	health_bar.value = tied_unit.HP
 	#sets data readout
-	health_data.text = "%d/%d" % [new_hp, tied_unit.MHP]
+	health_data.text = "%d/%d" % [tied_unit.HP, tied_unit.MHP]
 
-func update_sp(new_sp:int):
+func update_sp():
 	#sets sp bar fill
-	sp_bar.value = new_sp
+	sp_bar.value = tied_unit.SP
 	#sets data readout
-	sp_data.text = "%d/%d" % [new_sp, tied_unit.MSP]
+	sp_data.text = "%d/%d" % [tied_unit.SP, tied_unit.MSP]

@@ -13,7 +13,7 @@ const Elements		= Enums.type
 const Abilities		= Traits.traits
 const Relate		= Enums.relation
 const Aff			= Enums.affinity
-const ATypes = Enums.ActionType
+const ATypes 		= Enums.ActionType
 #endregion
 
 #region IMPORT CLASSES

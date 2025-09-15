@@ -123,5 +123,5 @@ func SetTurnOrder():
 	#sort turn order
 	var current = QuickSort(nodes[0])
 	while current != null:
-		current.execute_action(Debug.VERBOSE)
+		current.execute_action(Debug.NONE)
 		current = current.next_node

@@ -1,0 +1,10 @@
+res://TestEnvironments/StatOutputTest.tscn
+res://Enumerations/Enums.gd
+res://Enumerations/Traits.gd
+res://Enumerations/Skills.gd
+res://TestEnvironments/DevTools/testbed.gd
+res://Classes/DemonClasses/BattleDemon.gd
+res://Scenes/BattleHUD.tscn
+res://HelperFunctions/BattleMath.gd
+res://UI/DemonData.gd
+res://CombatSystems/BattleManager.gd

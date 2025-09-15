@@ -127,17 +127,51 @@ func execute_attack(debug_level:=Debug.NONE):
 	#endregion
 	
 	#region CHECK CRIT
-	#attack hit, so continue and find crit
-	var crit_chance = BattleMath.FullCrit(self, action["Target"], crit)
+	#attack hit, so continue and find crit if needed
+	if crit != 0:
+		var crit_chance = BattleMath.FullCrit(self, action["Target"], crit)
+		
+		#check if critical
+		rand = RNG.randi_range(1,100)
+		if rand <= crit_chance:
+			crit_mod = crit_mult
 	
-	#check if critical
-	rand = RNG.randi_range(1,100)
-	if rand <= crit_chance:
-		crit_mod = crit_mult
-	
-	if debug_level != Debug.NONE:
-		print("Calculated crit chance: %d" % [crit_chance])
-		print("Generated number: %d" % [rand])
+		if debug_level != Debug.NONE:
+			print("Calculated crit chance: %d" % [crit_chance])
+			print("Generated number: %d" % [rand])
 	#endregion
 	
-	var damage = BattleMath.FullDamageCalc(self, action["Target"], crit)
+	#region DAMAGE CALCULATION AND APPLICATION
+	var damage = BattleMath.FullDamageCalc(self, action["Target"], crit_mod)
+	if debug_level != Debug.NONE:
+		print("Calculated damage: %d" % [damage])
+	
+	#now, check to see how damage is applied
+	var skill_type = battack #default basic attack type
+	if action["Action"] == ATypes.Skill:
+		skill_type = action["Skill"].type #change to skill type
+	match action["Target"].aff[skill_type]:
+		Affinity.Null:
+			damage = 0.0
+			#TODO: add visual indicator of damage nullification
+		Affinity.Drain:
+			DealDamage(action["Target"], -damage)
+		Affinity.Repel:
+			damage = BattleMath.FullDamageCalc(self, self, 1) #redo damage calc if it is repelled
+			DealDamage(self, damage)
+		_:
+			DealDamage(action["Target"], damage)
+	
+	#endregion
+
+##this function handles dealing damage
+func DealDamage(target:battle_demon,damage:float):
+	#change HP amount
+	target.HP = min(target.MHP, max(0, target.HP - damage))
+	if target.HP == 0:
+		print("DEAD")
+	else:
+		print("%s has %d HP left" % [target.disp_name, target.HP])
+	
+	#update UI
+	target.ui_data.update_hp()
