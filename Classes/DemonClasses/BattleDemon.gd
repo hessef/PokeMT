@@ -35,6 +35,7 @@ const CritC  = BalanceEnum.crit_chance
 @export var node: action_node
 @export var crit_mult: float
 #endregion
+
 		
 #region ACTION SETTING
 @export var action = {	"Actor": self,
@@ -176,3 +177,4 @@ func DealDamage(target:battle_demon,damage:float):
 	
 	#update UI
 	target.ui_data.update_hp()
+	

@@ -1,0 +1,5 @@
+res://TestEnvironments/StatOutputTest.tscn
+res://Classes/DemonClasses/BattleDemon.gd
+res://UI/BattleUI.gd
+res://UI/BattleSlot.gd
+res://TestEnvironments/DevTools/testbed.gd

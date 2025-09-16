@@ -231,8 +231,12 @@ func populate_menu(data:Array[skill]):
 			var text = move.disp_name
 			if move.scaling == move.Scaling.Strength:
 				text = "%s    %d HP" % [move.disp_name, move.cost * 0.01 * tied_unit.MHP]
+				if (move.cost * 0.01 * tied_unit.MHP) >= tied_unit.HP:
+					skill_button.disabled = true #disable if cannot afford
 			elif move.scaling == move.Scaling.Magic:
 				text = "%s    %d SP" % [move.disp_name, move.cost]
+				if move.cost > tied_unit.SP:
+					skill_button.disabled = true #disable if cannot afford
 			skill_button.text = text
 			skill_button.alignment = HORIZONTAL_ALIGNMENT_RIGHT
 			
@@ -289,3 +293,18 @@ func add_guys(data:Array[battle_demon]):
 		back_button.text = "Back"
 		back_button.pressed.connect(_back_to_skills)
 		enemy_menu.add_child(back_button)
+
+##this function changes the usable skills
+func update_usability():
+	for item in skill_menu.get_children():
+		var ui_button := item as Button
+		if ui_button.text.contains("HP"):
+			if ui_button.text.to_int() >= tied_unit.HP:
+				ui_button.disabled = true
+			else:
+				ui_button.disabled = false
+		elif ui_button.text.contains("SP"):
+			if ui_button.text.to_int() > tied_unit.SP:
+				ui_button.disabled = true
+			else:
+				ui_button.disabled = false

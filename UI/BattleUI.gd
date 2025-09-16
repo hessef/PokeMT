@@ -13,6 +13,7 @@ var current_menu: bslot = null
 @export var BeginUI = Button.new()
 @export var action_set: Array[bool]
 @export var parent: battle_manager
+@export var slots: Array[bslot]
 #endregion
 
 func _init(party: Array[battle_demon], enemies: Array[battle_demon], origin):
@@ -57,7 +58,6 @@ func _init(party: Array[battle_demon], enemies: Array[battle_demon], origin):
 	var PlayerDemonSlots = HBoxContainer.new()
 	MC.add_child(PlayerDemonSlots)
 	
-	var slots: Array[bslot]
 	for i in range(min(4, party.size())):
 		action_set.append(false)
 		slots.append(bslot.new(party[i], self, i))
@@ -88,4 +88,8 @@ func SwitchMenu(menu:bslot):
 
 ##this function allows the round to begin
 func _begin_round():
+	#disable UI while round is going
+	BeginUI.disabled = true
+	for slot in slots:
+		slot.button.disabled = true
 	self.parent.SetTurnOrder()
