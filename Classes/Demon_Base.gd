@@ -35,7 +35,7 @@ var AuxFunctions	:= AuxiliaryFunctions.new()
 @export var mobility	:= Mobility.Legged
 @export var item		:= Items.held_items.NONE
 @export var status 		:= NVStatus.None
-@export var team		:= Teams.AI
+@export var team		:= Teams.AI_Wild
 #endregion
 
 #-----STAT DATA-----
@@ -65,9 +65,19 @@ var AuxFunctions	:= AuxiliaryFunctions.new()
 ##the demon's current exp (reset every level)
 @export var Exp:	int
 ##the demon's current HP
-@export var HP := 0
+@export var HP := 0:
+	set(value):
+		HP = value
+		if team == Teams.Player:
+			skill_selection_update()
+		update_hp_bar()
 ##the demon's current SP
-@export var SP := 0
+@export var SP := 0:
+	set(value):
+		SP = value
+		if team == Teams.Player:
+			skill_selection_update()
+		update_sp_bar()
 #endregion
 
 #region Persistent Bonus Stat Totals
@@ -300,7 +310,7 @@ func GetData(as_text:=false):
 						"Bless": Affinity.keys()[aff[Type.Bless]],
 						"Curse": Affinity.keys()[aff[Type.Curse]]}
 		inherit_out	= Type.keys()[inheritance]
-		for item in move_pool:
+		for thing in move_pool:
 			mp_out.append(disp_name)
 		for i in range(len(learnset)):
 			if learnset[i]:
@@ -345,4 +355,18 @@ func GetData(as_text:=false):
 	}
 	
 	return output
+#endregion
+
+#region EMPTY FUNCTIONS FOR OVERRIDING
+##this function updates the UI for selectable skills if needed
+func skill_selection_update():
+	pass
+
+##this function updates the HP bar
+func update_hp_bar():
+	pass
+	
+##this function updates the SP bar
+func update_sp_bar():
+	pass
 #endregion

@@ -69,7 +69,7 @@ func FullDamageCalc(user:battle_demon, target:battle_demon, crit:float): #TODO: 
 	var formula = "Persona"
 	var skill_type = user.battack #default basic attack type
 	if user.action["Action"] == ATypes.Skill:
-		power = user.action["Skill"].power
+		power = user.action["Skill"].power #change power if not a basic attack
 		formula = user.action["Skill"].source #only change formula if it's a skill
 		skill_type = user.action["Skill"].type #change to skill type
 		
@@ -86,6 +86,7 @@ func FullDamageCalc(user:battle_demon, target:battle_demon, crit:float): #TODO: 
 	var W = 1 #weather; Snow->ice*1.5,fire*0.5; Harsh sunlight->fire*1.5,ice*0.5
 	var GR = 1 #glaive rush; normally 1, 2 if the user used glaive rush last turn as well as this turn
 	var S = 1 #status; normally 1, but 0.5 if user is burned and using strength attack or frostbitten and using magic attack
+	var G = 1 #guarding; normally 1, but 0.5 if the target is guarding
 	
 	#next, calculate the effect of stab
 	var stab = STAB(user.inheritance, skill_type, user.ability)
@@ -99,9 +100,13 @@ func FullDamageCalc(user:battle_demon, target:battle_demon, crit:float): #TODO: 
 			aff = DamageMods.Weak
 		Aff.Null:
 			aff = 0
+			
+	#next, check guarding
+	if target.action["Action"] == ATypes.Guard:
+		G = 0.5
 	
 	#finally, put it all together
-	var output = base_damage * PB * W * GR * crit * stab * aff
+	var output = base_damage * PB * W * GR * crit * stab * aff * S * G
 	return output
 	
 ##compares user inheritance type and skill type
@@ -125,7 +130,7 @@ func STAB(	user_inheritance:Elements, skill_type:Elements, user_trait:Abilities)
 ##this function calculates the base crit chance (c1) of a move
 ##by using the user and target's level and luck
 func BaseCrit(user_lv:int, target_lv:int, user_lu:int, target_lu:int):
-	var output = 3 * ((float(user_lv+10)/float(target_lv+10))+float(min(4,((user_lu+10)/(target_lu+10))))**2.0)
+	var output = 3 * ((float(user_lv+10)/float(target_lv+10))+float(min(4,(float(user_lu+10)/float(target_lu+10))))**2.0)
 	return output
 
 ##this function calculates the actual crit chance for the move

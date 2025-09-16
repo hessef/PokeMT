@@ -12,6 +12,7 @@ const VStatus	:= Enum.volatile_status
 const Type		:= Enum.type
 const CritC		:= BalanceEnum.crit_chance
 const Teams		:= Enum.Team
+const Stages	:= BalanceEnum.stat_stages
 #endregion
 
 #region IMPORT FUNCTIONS
@@ -37,6 +38,8 @@ func _ready():
 	var enemies: Array[battle_demon] = [d5,d6]
 	var battle = battle_manager.new(party, enemies)
 	add_child(battle)
+	print("tsty")
+	d2.Spe_stages = Stages.Plus1
 
 func _button_pressed():
 	print("TEST")

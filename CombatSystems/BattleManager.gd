@@ -75,10 +75,6 @@ func Partition(head:action_node, tail:action_node):
 			Swap(curr, pre.next_node)
 			
 			pre = pre.next_node
-		elif (curr.adjusted_Spe == pivot.adjusted_Spe) and (curr.priority == pivot.priority):
-			#if they 
-			var rng = RandomNumberGenerator.new()
-			var rand_num = rng.randi_range(0,101)
 		curr = curr.next_node
 	
 	#swap data between pivot and pre
@@ -109,19 +105,26 @@ func QuickSort(head:action_node):
 	QuickSortHelper(head, tail)
 	return head
 
-##this function establishes turn order when the round begins
-func SetTurnOrder():
+##this function establishes turn order
+func SetTurnOrder(round_start:=true):
 	#set priority
 	for guy in nodes:
+		if round_start == true:
+			guy.acted = false #reset "acted" variable if it's the start of the round
 		if guy.unit.action["Action"] == ATypes.Skill:
 			guy.priority = guy.unit.action["Skill"].priority
 		elif guy.unit.action["Action"] == ATypes.Guard or guy.unit.action["Action"] == ATypes.Switch:
 			guy.priority = 7
 		else:
 			guy.priority = 0
+	
+	return QuickSort(nodes[0])
 
-	#sort turn order
-	var current = QuickSort(nodes[0])
+##this function executes the round
+func ExecuteRound():
+	var current = SetTurnOrder()
+	
+	#execute actions
 	while current != null:
 		current.execute_action(Debug.NONE)
 		current = current.next_node

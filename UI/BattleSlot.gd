@@ -36,6 +36,7 @@ func _init(unit:battle_demon, origin, index):
 	size_flags_vertical = Control.SIZE_SHRINK_END
 	parent = origin
 	tied_unit = unit
+	tied_unit.ui_slot = self
 	action_index = index
 	
 	#add vertical box to hold elements
@@ -143,7 +144,7 @@ func _battack():
 	
 func _skill_used(used_skill: skill):
 	skill_menu.hide()
-	ally_menu.hide
+	ally_menu.hide()
 			
 	var text = "Using %s on %s" % [used_skill.disp_name, current_target.nickname]
 	button.text = text

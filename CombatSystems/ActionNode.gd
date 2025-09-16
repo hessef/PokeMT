@@ -3,9 +3,10 @@ extends Node
 class_name action_node
 
 #region ENUMS
-const Debug = Enums.debug_level
-const Stages = BalanceEnum.stat_stages
-const ATypes = Enums.ActionType
+const Debug		= Enums.debug_level
+const Stages	= BalanceEnum.stat_stages
+const ATypes	= Enums.ActionType
+const Teams		= Enums.Team
 #endregion
 
 #region GLOBAL VARIABLES
@@ -49,6 +50,15 @@ func execute_action(debug_level:=Debug.NONE):
 	if debug_level != Debug.NONE:
 		debug(debug_level)
 	
+	#skip if slot is empty or unit has been replaced
+	if acted == true or unit.HP == 0:
+		pass
+	
+	#execute action
 	if unit.action["Action"] == ATypes.Basic_Attack or unit.action["Action"] == ATypes.Skill:
 		unit.execute_attack(debug_level)
+	elif unit.action["Action"] == ATypes.Guard:
+		unit.execute_guard()
+	#TODO: add logic for switching
+	
 	acted = true

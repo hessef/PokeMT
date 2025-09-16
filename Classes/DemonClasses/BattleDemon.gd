@@ -32,8 +32,10 @@ const CritC  = BalanceEnum.crit_chance
 @export var sprite_texture: CompressedTexture2D
 @export var sprite: Sprite2D
 @export var ui_data: DemonData
+@export var ui_slot: bslot
 @export var node: action_node
 @export var crit_mult: float
+@export var parent: battle_manager = null
 #endregion
 
 		
@@ -113,8 +115,13 @@ func execute_attack(debug_level:=Debug.NONE):
 		accuracy = action["Skill"].accuracy
 		if action["Skill"].type in [Type.Slash, Type.Strike, Type.Gun]:
 			crit = action["Skill"].crit
+			#consume HP (if not enough, will simply die
+			HP = max(0, HP - (action["Skill"].cost * 0.01 * MHP))
 		else:
 			crit = 0
+			#consume SP (if not enough, skill fails)
+			if SP - action["Skill"].cost <= SP:
+				SP = max(0, SP - action["Skill"].cost)
 	#check if it hits
 	var chance = BattleMath.HitChance(accuracy, 1, item, action["Target"].Eva_stages, Acc_stages, action["Target"].Eva, Acc)
 	var rand = RNG.randi_range(1,100)
@@ -162,7 +169,7 @@ func execute_attack(debug_level:=Debug.NONE):
 			DealDamage(self, damage)
 		_:
 			DealDamage(action["Target"], damage)
-	
+	#TODO: add ui to narrate action
 	#endregion
 
 ##this function handles dealing damage
@@ -172,9 +179,24 @@ func DealDamage(target:battle_demon,damage:float):
 	if target.HP == 0:
 		target.ui_data.vbox.hide() #hide the vbox instead of the whole thing so that the spacing isn't thrown off
 		target.sprite.hide()
-	else:
-		print("%s has %d HP left" % [target.disp_name, target.HP])
+
+##this function handles guarding
+func execute_guard():
+	pass
+	#TODO: add ui to narrate action
 	
-	#update UI
-	target.ui_data.update_hp()
+#region FUNCTION OVERRIDES
+##this function updates the UI for selectable skills if needed
+func skill_selection_update():
+	ui_slot.update_usability()
 	
+##this function updates the HP bar
+func update_hp_bar():
+	if ui_data:
+		ui_data.update_hp()
+	
+##this function updates the SP bar
+func update_sp_bar():
+	if ui_data:
+		ui_data.update_sp()
+#endregion
