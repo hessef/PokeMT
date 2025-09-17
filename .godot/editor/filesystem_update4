@@ -1,10 +1,9 @@
 res://TestEnvironments/StatOutputTest.tscn
 res://CombatSystems/BattleManager.gd
-res://CombatSystems/ActionNode.gd
-res://Classes/DemonClasses/BattleDemon.gd
-res://Enumerations/Enums.gd
-res://Classes/Demon_Base.gd
-res://UI/BattleSlot.gd
-res://HelperFunctions/BattleMath.gd
 res://UI/BattleUI.gd
+res://CombatSystems/ActionNode.gd
+res://metadata.gd
+res://UI/BattleSlot.gd
 res://TestEnvironments/DevTools/testbed.gd
+res://Classes/DemonClasses/BattleDemon.gd
+res://Enumerations/Balance.gd

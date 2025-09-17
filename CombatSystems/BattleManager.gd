@@ -3,8 +3,9 @@ extends Node
 class_name battle_manager
 
 #region ENUMS
-const Debug = Enums.debug_level
-const ATypes = Enums.ActionType
+const Debug		= Enums.debug_level
+const ATypes	= Enums.ActionType
+const Teams		= Enums.Team
 #endregion
 
 #region GLOBAL VARIABLES
@@ -13,6 +14,7 @@ const ATypes = Enums.ActionType
 @export var drawing: DrawUnits
 @export var BUI: battle_ui
 @export var nodes: Array[action_node]
+@export var units_in_play:= {"Player": 0, "Enemies": 0}
 #endregion
 
 func _init(input_party:Array[battle_demon], input_enemies:Array[battle_demon]):
@@ -28,18 +30,27 @@ func _init(input_party:Array[battle_demon], input_enemies:Array[battle_demon]):
 	
 	#create nodes for each demon on the field
 	for i in range(min(4,len(party))):
-		var new_node = action_node.new(party[i])
+		var new_node = action_node.new(party[i], self)
+		#set parent of unit as self
+		party[i].parent = self
 		#set connection for previous node
 		if i != 0:
 			nodes[i-1].next_node = new_node
 		nodes.append(new_node)
+		
+		#add to team count
+		units_in_play.Player += 1
 	
 	for i in range(len(enemies)):
-		var new_node = action_node.new(enemies[i])
+		var new_node = action_node.new(enemies[i], self)
+		#set parent of unit as self
+		enemies[i].parent = self
 		#set connection for previous node
 		nodes[i+min(4,len(party))-1].next_node = new_node
 		nodes.append(new_node)
-	
+		
+		#add to team count
+		units_in_play.Enemies += 1
 
 ##this function gets the tail of the linked list
 func GetTail(cur:action_node):
@@ -128,3 +139,9 @@ func ExecuteRound():
 	while current != null:
 		current.execute_action(Debug.NONE)
 		current = current.next_node
+
+	#begin next round
+	for slot in range(len(BUI.action_set)):
+		BUI.action_set[slot] = false
+	BUI.toggle_ui()
+	BUI.BeginUI.show()

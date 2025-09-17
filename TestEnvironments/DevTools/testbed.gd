@@ -38,7 +38,6 @@ func _ready():
 	var enemies: Array[battle_demon] = [d5,d6]
 	var battle = battle_manager.new(party, enemies)
 	add_child(battle)
-	print("tsty")
 	d2.Spe_stages = Stages.Plus1
 
 func _button_pressed():

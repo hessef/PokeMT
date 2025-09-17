@@ -32,7 +32,8 @@ const CritC  = BalanceEnum.crit_chance
 @export var sprite_texture: CompressedTexture2D
 @export var sprite: Sprite2D
 @export var ui_data: DemonData
-@export var ui_slot: bslot
+@export var ui_slot: bslot #for player demons
+@export var ui_button: Button #for enemy demons
 @export var node: action_node
 @export var crit_mult: float
 @export var parent: battle_manager = null
@@ -176,9 +177,6 @@ func execute_attack(debug_level:=Debug.NONE):
 func DealDamage(target:battle_demon,damage:float):
 	#change HP amount
 	target.HP = min(target.MHP, max(0, target.HP - damage))
-	if target.HP == 0:
-		target.ui_data.vbox.hide() #hide the vbox instead of the whole thing so that the spacing isn't thrown off
-		target.sprite.hide()
 
 ##this function handles guarding
 func execute_guard():
@@ -195,6 +193,16 @@ func update_hp_bar():
 	if ui_data:
 		ui_data.update_hp()
 	
+	#update visibility if dead
+	if HP == 0:
+		ui_data.vbox.hide() #hide the vbox instead of the whole thing so that the spacing isn't thrown off
+		sprite.hide()
+		#lower count for the correct team if dead
+		if team == Teams.Player:
+			parent.units_in_play.Player -= 1
+		else:
+			parent.units_in_play.Enemies -= 1
+			
 ##this function updates the SP bar
 func update_sp_bar():
 	if ui_data:

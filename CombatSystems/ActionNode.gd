@@ -15,12 +15,14 @@ const Teams		= Enums.Team
 @export var adjusted_Spe: int #speed of the unit
 @export var priority: int = 0 #priority level of the action, default 0
 @export var acted := false #boolean for if the unit has had their turn yet
+@export var b_man : battle_manager
 #endregion
 
-func _init(tied_unit: battle_demon):
+func _init(tied_unit: battle_demon, parent: battle_manager):
 	#set parameters
 	unit = tied_unit
 	unit.node = self
+	b_man = parent
 	adjusted_Spe = int(float(unit.Spe) * unit.Spe_stages)
 
 ##prints data for debugging
@@ -61,4 +63,7 @@ func execute_action(debug_level:=Debug.NONE):
 		unit.execute_guard()
 	#TODO: add logic for switching
 	
+	#reset the action button
+	if unit.team == Teams.Player:
+		unit.ui_slot.button.text = "Action Unset"
 	acted = true

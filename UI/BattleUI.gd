@@ -90,7 +90,10 @@ func SwitchMenu(menu:bslot):
 func _begin_round():
 	#disable UI while round is going
 	BeginUI.disabled = true
-	BeginUI.hide()
-	for slot in slots:
-		slot.button.disabled = true
+	BeginUI.visible = false
+	toggle_ui()
 	self.parent.ExecuteRound()
+
+func toggle_ui():
+	for slot in slots:
+		slot.button.disabled = not slot.button.disabled

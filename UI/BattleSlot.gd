@@ -182,8 +182,11 @@ func _select_enemy(used_skill:skill):
 	#add affinity info to each enemy
 	for i in range(len(enemy_list)):
 		#set icon as needed
-		var icon = AuxFunctions.GetAffinityIcon(used_skill.type, enemy_list[i])
-		enemy_menu_list[i].icon = icon
+		if enemy_list[i].HP != 0:
+			var icon = AuxFunctions.GetAffinityIcon(used_skill.type, enemy_list[i])
+			enemy_menu_list[i].icon = icon
+		else:
+			enemy_menu_list[i].hide()
 	using_skill = used_skill
 	using_battack = false
 
@@ -218,8 +221,8 @@ func _back_to_skills():
 	
 func populate_menu(data:Array[skill]):
 	for move in data:
-		#make sure it's not a passive
-		if move.type != types.Passive:
+		#make sure it's not a passive and not a disabled type
+		if move.type != types.Passive and move.type not in metadata.disabled_skill_types:
 			#create button
 			var skill_button = Button.new()
 			
@@ -279,9 +282,10 @@ func add_guys(data:Array[battle_demon]):
 		ally_menu.add_child(back_button)
 	else:
 		for guy in data:
-			#create button for each ally
+			#create button for each enemy
 			var unit_button = Button.new()
 			unit_button.text = guy.nickname
+			guy.ui_button = unit_button
 			
 			#link button
 			unit_button.pressed.connect(_enemy_selected.bind(guy))
