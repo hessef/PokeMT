@@ -134,14 +134,35 @@ func SetTurnOrder(round_start:=true):
 ##this function executes the round
 func ExecuteRound():
 	var current = SetTurnOrder()
-	
+	var winner = null #variable to hold whether or not the battle is over
 	#execute actions
 	while current != null:
 		current.execute_action(Debug.NONE)
 		current = current.next_node
+		
+		#check if one side is completely eliminated
+		if units_in_play.Player == 0:
+			winner = Teams.Enemies
+			break
+		elif units_in_play.Enemies == 0:
+			winner = Teams.Player
+			break
+	
+	#end round if needed
+	if winner:
+		BattleEnd(winner)
+		return
 
 	#begin next round
 	for slot in range(len(BUI.action_set)):
 		BUI.action_set[slot] = false
 	BUI.toggle_ui()
 	BUI.BeginUI.show()
+	
+##this function ends a battle
+func BattleEnd(winner:Teams):
+	#TODO: add actual win screen
+	if winner == Teams.Player:
+		print("YOU WIN")
+	else:
+		print("YOU LOSE")

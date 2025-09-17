@@ -106,6 +106,10 @@ func DrawSprite(origin, location:Vector2, scale = 1.0):
 	
 ##execute offensive skill
 func execute_attack(debug_level:=Debug.NONE):
+	#TODO: add logic for what happens when the target is dead
+	if action.Target.HP == 0:
+		return
+	
 	var accuracy = 1
 	var crit = CritC.DefaultP5 #skill crit chance (default for basic attack)
 	var crit_mod = 1.0 #holds the multiplier for crit
@@ -202,7 +206,6 @@ func update_hp_bar():
 			parent.units_in_play.Player -= 1
 		else:
 			parent.units_in_play.Enemies -= 1
-			
 ##this function updates the SP bar
 func update_sp_bar():
 	if ui_data:

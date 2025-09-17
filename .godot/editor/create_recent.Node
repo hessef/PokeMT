@@ -1,3 +1,4 @@
+MarginContainer
 TextureRect
 Button
 VBoxContainer
@@ -5,11 +6,9 @@ Label
 PanelContainer
 DemonData
 HBoxContainer
-MarginContainer
 Control
 ProgressBar
 Sprite2D
 Node2D
 Panel
 MenuButton
-Window

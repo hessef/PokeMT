@@ -66,4 +66,5 @@ func execute_action(debug_level:=Debug.NONE):
 	#reset the action button
 	if unit.team == Teams.Player:
 		unit.ui_slot.button.text = "Action Unset"
+	print(b_man.units_in_play)
 	acted = true

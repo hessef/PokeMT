@@ -12,9 +12,7 @@ enum debug_level {	NONE,
 #region TEAM
 ##Teams
 enum Team {	Player,
-			AI_Wild,
-			AI_Trainer,
-			AI_Boss}
+			Enemies}
 #endregion
 
 #region OBJECT TYPES

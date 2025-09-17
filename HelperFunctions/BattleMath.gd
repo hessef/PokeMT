@@ -14,6 +14,7 @@ const Abilities		= Traits.traits
 const Relate		= Enums.relation
 const Aff			= Enums.affinity
 const ATypes 		= Enums.ActionType
+const Debug			= Enums.debug_level
 #endregion
 
 #region IMPORT CLASSES
@@ -62,7 +63,7 @@ func BaseDamageCalcPersona(	power:int, atk:int, def:int,
 	return output
 	
 ##calculates the damage done by an attack
-func FullDamageCalc(user:battle_demon, target:battle_demon, crit:float): #TODO: allow for more modifiers
+func FullDamageCalc(user:battle_demon, target:battle_demon, crit:float, debug_level:=Debug.NONE): #TODO: allow for more modifiers
 	#first, find the base power (100 for basic attack)
 	#and determine which formula to use (default persona)
 	var power = BalanceEnum.BasicAttackPower
@@ -107,6 +108,29 @@ func FullDamageCalc(user:battle_demon, target:battle_demon, crit:float): #TODO: 
 	
 	#finally, put it all together
 	var output = base_damage * PB * W * GR * crit * stab * aff * S * G
+	
+	#region DAMAGE CALC DEBUG
+	if debug_level == Debug.INFO:
+		print("Attacker: %s" % [user.nickname])
+		print("Defender: %s" % [target.nickname])
+		print("Calculated Damage: %d\n" % [output])
+	elif debug_level == Debug.VERBOSE:
+		print("-----BASE DAMAGE CALCULATION-----")
+		print("Attacker: %s" % [user.nickname])
+		print("Defender: %s" % [target.nickname])
+		print("Attack Base Power: %d" % [power])
+		print("Calculated Base Damage: %f" % [base_damage])
+		print("-----DAMAGE MODIFIERS-----")
+		print("Parental Bond: %f" % [PB])
+		print("Weather: %f" % [W])
+		print("Glaive Rush: %f" % [GR])
+		print("Status: %f" % [S])
+		print("Guarding: %f" % [G])
+		print("STAB Multiplier: %f" % [stab])
+		print("Affinity Multiplier: %f" % [aff])
+		print("-----FINAL RESULT-----")
+		print("Calculated Damage: %f\n" % [output])
+	#endregion
 	return output
 	
 ##compares user inheritance type and skill type

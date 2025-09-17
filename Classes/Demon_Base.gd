@@ -35,7 +35,7 @@ var AuxFunctions	:= AuxiliaryFunctions.new()
 @export var mobility	:= Mobility.Legged
 @export var item		:= Items.held_items.NONE
 @export var status 		:= NVStatus.None
-@export var team		:= Teams.AI_Wild
+@export var team		:= Teams.Enemies
 #endregion
 
 #-----STAT DATA-----
