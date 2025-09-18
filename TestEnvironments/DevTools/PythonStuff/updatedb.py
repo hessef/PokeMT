@@ -1,5 +1,5 @@
 # ============================================================================================
-# this code is meant to update the sqlite databases for PokeMT and should only be used by devs
+# This code is meant to update the sqlite databases for PokeMT and should only be used by devs
 # ============================================================================================
 
 import sqlite3 as sql
@@ -326,8 +326,8 @@ def UpdateSkills(debug=Debug.NONE):
         return False
 
 def main():
-    UpdateDemons()
-    UpdateSkills()
+    UpdateDemons(Debug.INFO)
+    UpdateSkills(Debug.INFO)
     
         
 
