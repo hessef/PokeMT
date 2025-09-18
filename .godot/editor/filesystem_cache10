@@ -1,5 +1,6 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1758157577
+::res://::1758229462
+export_presets.cfg::TextFile::-1::1758157718::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D/CompressedTexture2D::5957012520055757050::1756054543::1756054601::1::::<><><>0<>0<>0d5325c79f9b754d7247873e6399c337<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 metadata.gd::GDScript::1608132015534124085::1758154404::0::1::::metadata<>Node<><>0<>0<><>::
 README.txt::TextFile::-1::1756054542::0::1::::<><><>0<>0<><>::
@@ -10,7 +11,7 @@ gdsqlite.gdextension::GDExtension::4837341577405836572::1756054543::0::1::::<><>
 godot-sqlite.gd::GDScript::6354497535622739150::1756054543::0::1::::<>EditorPlugin<><>0<>1<><>::
 LICENSE.md::TextFile::-1::1756054542::0::1::::<><><>0<>0<><>::
 plugin.cfg::TextFile::-1::1756054543::0::1::::<><><>0<>0<><>::
-::res://addons/godot-sqlite/bin/::1758157572
+::res://addons/godot-sqlite/bin/::1758229458
 ::res://addons/godot-sqlite/bin/libgdsqlite.ios.template_debug.xcframework/::1756091070
 ::res://addons/godot-sqlite/bin/libgdsqlite.ios.template_debug.xcframework/ios-arm64/::1756091070
 ::res://addons/godot-sqlite/bin/libgdsqlite.ios.template_debug.xcframework/ios-arm64_x86_64-simulator/::1756091070
@@ -55,9 +56,9 @@ Traits.gd::GDScript::6646100509164652140::1757965742::0::1::::<>Node<><>0<>0<><>
 AuxiliaryFunctions.gd::GDScript::1525930725943871562::1756226599::0::1::::AuxiliaryFunctions<>Node<><>0<>0<><>::
 BattleMath.gd::GDScript::6816694770768993241::1758140602::0::1::::battle_math<>Node<><>0<>0<><>::
 SaveLoad.gd::GDScript::6836291383243033363::1756079207::0::1::::save_manager<>Node<><>0<>0<><>::
-::res://Scenes/::1758157059
+::res://Scenes/::1758157796
 BattleHUD.tscn::PackedScene::4173009866706425219::1757965974::0::1::::<><><>0<>0<><>::
-MainMenu.tscn::PackedScene::4206444994764115299::1758157059::0::1::::<><><>0<>0<><>::
+MainMenu.tscn::PackedScene::4206444994764115299::1758157796::0::1::::<><><>0<>0<><>::
 ::res://TestEnvironments/::1758140704
 StatOutputTest.tscn::PackedScene::6551882491741477435::1758140704::0::1::::<><><>0<>0<><>::uid://crpilv17eu1mn::::res://TestEnvironments/DevTools/testbed.gd
 ::res://TestEnvironments/DevTools/::1758136670

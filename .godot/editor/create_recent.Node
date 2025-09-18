@@ -1,3 +1,4 @@
+HBoxContainer
 MarginContainer
 TextureRect
 Button
@@ -5,7 +6,6 @@ VBoxContainer
 Label
 PanelContainer
 DemonData
-HBoxContainer
 Control
 ProgressBar
 Sprite2D
