@@ -13,7 +13,8 @@ config_version=5
 config/name="PokeMT"
 run/main_scene="uid://b06vsf41gn8xj"
 config/features=PackedStringArray("4.5", "Mobile")
-boot_splash/bg_color=Color(0.17105702, 0.104400866, 0.23828772, 1)
+boot_splash/bg_color=Color(0.6010788, 0.4564427, 0.7558519, 1)
+boot_splash/image="uid://dk7x0rm8uiilo"
 config/icon="res://icon.svg"
 
 [autoload]

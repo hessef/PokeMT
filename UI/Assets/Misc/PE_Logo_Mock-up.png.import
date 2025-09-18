@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djppuqrfytdho"
-path="res://.godot/imported/PESplash.jpg-9266b801d7b32ae4ab6094832dcf5866.ctex"
+uid="uid://dk7x0rm8uiilo"
+path="res://.godot/imported/PE_Logo_Mock-up.png-65980a81018c0ba7f0db3e9d2344107c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/Assets/Misc/PESplash.jpg"
-dest_files=["res://.godot/imported/PESplash.jpg-9266b801d7b32ae4ab6094832dcf5866.ctex"]
+source_file="res://UI/Assets/Misc/PE_Logo_Mock-up.png"
+dest_files=["res://.godot/imported/PE_Logo_Mock-up.png-65980a81018c0ba7f0db3e9d2344107c.ctex"]
 
 [params]
 
