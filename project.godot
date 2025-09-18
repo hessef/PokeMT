@@ -16,6 +16,7 @@ config/features=PackedStringArray("4.5", "Mobile")
 boot_splash/bg_color=Color(0.6010788, 0.4564427, 0.7558519, 1)
 boot_splash/image="uid://81rfvepm121o"
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=250
 
 [autoload]
 
