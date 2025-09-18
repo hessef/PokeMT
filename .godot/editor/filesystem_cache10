@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1758154489
+::res://::1758157028
 icon.svg::CompressedTexture2D/CompressedTexture2D::5957012520055757050::1756054543::1756054601::1::::<><><>0<>0<>0d5325c79f9b754d7247873e6399c337<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 metadata.gd::GDScript::1608132015534124085::1758154404::0::1::::metadata<>Node<><>0<>0<><>::
 README.txt::TextFile::-1::1756054542::0::1::::<><><>0<>0<><>::
@@ -10,7 +10,7 @@ gdsqlite.gdextension::GDExtension::4837341577405836572::1756054543::0::1::::<><>
 godot-sqlite.gd::GDScript::6354497535622739150::1756054543::0::1::::<>EditorPlugin<><>0<>1<><>::
 LICENSE.md::TextFile::-1::1756054542::0::1::::<><><>0<>0<><>::
 plugin.cfg::TextFile::-1::1756054543::0::1::::<><><>0<>0<><>::
-::res://addons/godot-sqlite/bin/::1758154459
+::res://addons/godot-sqlite/bin/::1758157024
 ::res://addons/godot-sqlite/bin/libgdsqlite.ios.template_debug.xcframework/::1756091070
 ::res://addons/godot-sqlite/bin/libgdsqlite.ios.template_debug.xcframework/ios-arm64/::1756091070
 ::res://addons/godot-sqlite/bin/libgdsqlite.ios.template_debug.xcframework/ios-arm64_x86_64-simulator/::1756091070
@@ -55,9 +55,9 @@ Traits.gd::GDScript::6646100509164652140::1757965742::0::1::::<>Node<><>0<>0<><>
 AuxiliaryFunctions.gd::GDScript::1525930725943871562::1756226599::0::1::::AuxiliaryFunctions<>Node<><>0<>0<><>::
 BattleMath.gd::GDScript::6816694770768993241::1758140602::0::1::::battle_math<>Node<><>0<>0<><>::
 SaveLoad.gd::GDScript::6836291383243033363::1756079207::0::1::::save_manager<>Node<><>0<>0<><>::
-::res://Scenes/::1758154406
+::res://Scenes/::1758154675
 BattleHUD.tscn::PackedScene::4173009866706425219::1757965974::0::1::::<><><>0<>0<><>::
-MainMenu.tscn::PackedScene::4206444994764115299::1758154406::0::1::::<><><>0<>0<><>::
+MainMenu.tscn::PackedScene::4206444994764115299::1758154675::0::1::::<><><>0<>0<><>::
 ::res://TestEnvironments/::1758140704
 StatOutputTest.tscn::PackedScene::6551882491741477435::1758140704::0::1::::<><><>0<>0<><>::uid://crpilv17eu1mn::::res://TestEnvironments/DevTools/testbed.gd
 ::res://TestEnvironments/DevTools/::1758136670
@@ -142,6 +142,6 @@ Resist.png::CompressedTexture2D/CompressedTexture2D::1637601896253484532::175607
 ResistMASTER.png::CompressedTexture2D/CompressedTexture2D::7677798090841406473::1756079207::1756091086::1::::<><><>0<>0<>104a89e04913c60048c4b309365338a3<>res://.godot/imported/ResistMASTER.png-9ec09fc161b67e0dd03ab766c5ca990e.ctex::
 Weak.png::CompressedTexture2D/CompressedTexture2D::2845521083903858430::1756079207::1756091086::1::::<><><>0<>0<>f590ce427f9068a48260849294d1cc83<>res://.godot/imported/Weak.png-871d6369a7bf8a137ccca450bef2a2c1.ctex::
 WeakMASTER.png::CompressedTexture2D/CompressedTexture2D::8785057131178298738::1756079207::1756091086::1::::<><><>0<>0<>3e01e06d87c484f598c3ddfd22135762<>res://.godot/imported/WeakMASTER.png-2159d4d67046faba0202caa4f3a401a3.ctex::
-::res://UI/Assets/Misc/::1758154629
-PESplash.jpg::CompressedTexture2D::7822874647797363200::1758150281::1758153706::1::::<><><>0<>0<>25d75b27921cda3c321edd4988e837cc<>res://.godot/imported/PESplash.jpg-9266b801d7b32ae4ab6094832dcf5866.ctex::
+::res://UI/Assets/Misc/::1758157005
+Perspicacious_Entertainment.png::CompressedTexture2D::2370947889375369310::1758157005::1758157029::1::::<><><>0<>0<>97bfa339f7a7a9959b92827de5b75ff6<>res://.godot/imported/Perspicacious_Entertainment.png-d227fa77d0d82c6adf4972abc797a52d.ctex::
 PE_Logo_Mock-up.png::CompressedTexture2D::7928652624231816132::1758154614::1758154631::1::::<><><>0<>0<>bf600ad0e6635c22ba338c93efa225cd<>res://.godot/imported/PE_Logo_Mock-up.png-65980a81018c0ba7f0db3e9d2344107c.ctex::
