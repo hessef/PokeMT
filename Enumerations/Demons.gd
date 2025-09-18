@@ -107,6 +107,7 @@ enum demons {
 	Gorokichi,
 	Regent,
 	Eligor,
+	Take_Mikazuchi,
 	Setanta,
 	Thoth,
 	Barong,

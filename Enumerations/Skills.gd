@@ -667,7 +667,7 @@ enum skills {
 				
 				##ailment, single target, 5 SP,
 				##high70 chance to inflict forget
-				Makajam,
+				Makajama,
 				
 				##ailment, single target, 12 SP,
 				##medium4 chance to inflict forget

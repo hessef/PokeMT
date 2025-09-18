@@ -51,16 +51,20 @@ def GenerateReplacementString(header, data):
     :return: string to insert
     :rtype: str
     """
-    
+    if "DEMONS" in header:
+        enum = "Race."
+    elif "SKILLS" in header:
+        enum = "Skill."
+
     #create output string
-    output = header + '\t"' + data[0] + '",\n'
+    output = header + '\t' + enum + data[0] + ',\n'
 
     #iterate through all but the first and last item
     for i in range(len(data)-2):
-        output = output + '\t\t\t\t\t\t\t\t"' + data[i+1] + '",\n'
+        output = output + '\t\t\t\t\t\t\t\t' + enum + data[i+1] + ',\n'
 
     #append the last item and the footer
-    output = output + '\t\t\t\t\t\t\t\t"' + data[len(data)-1] + '"]\n#endregion'
+    output = output + '\t\t\t\t\t\t\t\t' + enum + data[len(data)-1] + ']\n#endregion'
 
     return output
 
