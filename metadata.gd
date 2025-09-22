@@ -13,11 +13,11 @@ const game_version = "0.0.0.1"
 #endregion
 
 #region CREDITS
-const credits = {	"Programming": {"Name": "Literally //REDACTED//",
-									"Github": "hessef"},
-					"Logo Artist": {"Name": "PommePaloma",
-									"Instagram": "pommepaloma",
-									"Tumblr": "pommepaloma"},
+const credits = {	"Credits":{	"Programming and Design": {	"Name": "Literally //REDACTED//",
+															"Github": "hessef"},
+								"Logo Artist": {			"Name": "PommePaloma",
+															"Instagram": "pommepaloma",
+															"Tumblr": "pommepaloma"}},
 					"Made By":		"Perspicacious Entertainment",
 					"Sources": {	"Assets": "The Spriter's Resource"}}
 #endregion

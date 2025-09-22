@@ -1,2 +1,5 @@
+res://UI/MainMenu.gd
 res://Scenes/MainMenu.tscn
 res://Scenes/CreditsText.gd
+res://metadata.gd
+res://UI/BarPercent.gd

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b06vsf41gn8xj"]
+[gd_scene load_steps=6 format=3 uid="uid://b06vsf41gn8xj"]
 
 [ext_resource type="Script" uid="uid://f5nqil686nn6" path="res://UI/MainMenu.gd" id="1_tt5f1"]
 [ext_resource type="Script" uid="uid://b74d838q084kl" path="res://UI/version_number.gd" id="2_853f1"]
 [ext_resource type="Texture2D" uid="uid://81rfvepm121o" path="res://UI/Assets/Misc/Perspicacious_Entertainment.png" id="3_8saeu"]
+[ext_resource type="Script" uid="uid://cj5dig47ok7u" path="res://UI/BarPercent.gd" id="3_df05h"]
 [ext_resource type="Script" uid="uid://ccruj3qx1n12b" path="res://Scenes/CreditsText.gd" id="4_ghw46"]
 
 [node name="Window" type="MarginContainer"]
@@ -98,16 +99,138 @@ visible = false
 layout_mode = 2
 
 [node name="Options" type="HBoxContainer" parent="Menu"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Options"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Button" type="Button" parent="Menu/Options/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "BACK"
+
+[node name="PanelContainer" type="PanelContainer" parent="Menu/Options"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+
+[node name="Options List" type="VBoxContainer" parent="Menu/Options/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="Menu/Options/PanelContainer/Options List"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Options/PanelContainer/Options List/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Audio"
+horizontal_alignment = 1
+
+[node name="Master" type="HBoxContainer" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Master"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Master"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Master"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 1
+value = 80.0
+ticks_position = 3
+
+[node name="Label2" type="Label" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Master"]
+layout_mode = 2
+text = "80"
+script = ExtResource("3_df05h")
+
+[node name="Music" type="HBoxContainer" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Music"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Music"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Music"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 1
+value = 80.0
+ticks_position = 3
+
+[node name="Label2" type="Label" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Music"]
+layout_mode = 2
+text = "80"
+script = ExtResource("3_df05h")
+
+[node name="Sound Effects" type="HBoxContainer" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Sound Effects"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Battle SFX"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Sound Effects"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 1
+value = 80.0
+ticks_position = 3
+
+[node name="Label2" type="Label" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Sound Effects"]
+layout_mode = 2
+text = "80"
+script = ExtResource("3_df05h")
+
+[node name="UI Effects" type="HBoxContainer" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/UI Effects"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "UI SFX	"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/UI Effects"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 1
+value = 80.0
+ticks_position = 3
+
+[node name="Label2" type="Label" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/UI Effects"]
+layout_mode = 2
+text = "80"
+script = ExtResource("3_df05h")
+
+[node name="Credits" type="HBoxContainer" parent="Menu"]
 visible = false
 layout_mode = 2
 
-[node name="Credits" type="HBoxContainer" parent="Menu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Credits"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Menu/Credits"]
+[node name="TextureRect" type="TextureRect" parent="Menu/Credits/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 texture = ExtResource("3_8saeu")
 expand_mode = 3
+
+[node name="Button" type="Button" parent="Menu/Credits/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "BACK"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Menu/Credits"]
 layout_mode = 2
@@ -167,15 +290,29 @@ text = "NO WAIT HOLD ON"
 [connection signal="from_quit" from="." to="ColorRect" method="hide"]
 [connection signal="from_quit" from="." to="QuitPopup" method="hide"]
 [connection signal="from_team" from="." to="Menu/Team" method="hide"]
+[connection signal="to_main" from="." to="Menu/Main" method="show"]
 [connection signal="pressed" from="Menu/Main/Left Side/Button Container/Menu Buttons/Play Button" to="." method="_start_game"]
 [connection signal="pressed" from="Menu/Main/Left Side/Button Container/Menu Buttons/Team" to="." method="_set_window" binds= [2]]
+[connection signal="pressed" from="Menu/Main/Left Side/Button Container/Menu Buttons/Options Button" to="Menu/Main" method="hide"]
+[connection signal="pressed" from="Menu/Main/Left Side/Button Container/Menu Buttons/Options Button" to="Menu/Options" method="show"]
 [connection signal="pressed" from="Menu/Main/Left Side/Button Container/Menu Buttons/Options Button" to="." method="_set_window" binds= [3]]
-[connection signal="pressed" from="Menu/Main/Left Side/Button Container/Menu Buttons/Credits Button" to="Menu" method="hide"]
+[connection signal="pressed" from="Menu/Main/Left Side/Button Container/Menu Buttons/Credits Button" to="Menu/Main" method="hide"]
 [connection signal="pressed" from="Menu/Main/Left Side/Button Container/Menu Buttons/Credits Button" to="Menu/Credits" method="show"]
 [connection signal="pressed" from="Menu/Main/Left Side/Button Container/Menu Buttons/Credits Button" to="." method="_set_window" binds= [4]]
 [connection signal="pressed" from="Menu/Main/Left Side/Button Container/Menu Buttons/Quit Button" to="ColorRect" method="show"]
 [connection signal="pressed" from="Menu/Main/Left Side/Button Container/Menu Buttons/Quit Button" to="QuitPopup" method="show"]
 [connection signal="pressed" from="Menu/Main/Left Side/Button Container/Menu Buttons/Quit Button" to="." method="_set_window" binds= [5]]
+[connection signal="pressed" from="Menu/Options/VBoxContainer/Button" to="Menu/Main" method="show"]
+[connection signal="pressed" from="Menu/Options/VBoxContainer/Button" to="Menu/Options" method="hide"]
+[connection signal="pressed" from="Menu/Options/VBoxContainer/Button" to="." method="_set_window" binds= [0]]
+[connection signal="value_changed" from="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Master/HSlider" to="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Master/Label2" method="_update_text"]
+[connection signal="value_changed" from="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Music/HSlider" to="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Music/Label2" method="_update_text"]
+[connection signal="value_changed" from="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Sound Effects/HSlider" to="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Sound Effects/Label2" method="_update_text"]
+[connection signal="value_changed" from="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/UI Effects/HSlider" to="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/UI Effects/Label2" method="_update_text"]
+[connection signal="pressed" from="Menu/Credits/VBoxContainer/Button" to="Menu/Main" method="show"]
+[connection signal="pressed" from="Menu/Credits/VBoxContainer/Button" to="Menu/Credits" method="hide"]
+[connection signal="pressed" from="Menu/Credits/VBoxContainer/Button" to="." method="_set_window" binds= [0]]
+[connection signal="meta_clicked" from="Menu/Credits/RichTextLabel" to="Menu/Credits/RichTextLabel" method="_richtextlabel_on_meta_clicked"]
 [connection signal="pressed" from="QuitPopup/Confirm Quit/VBoxContainer/HBoxContainer/Quit" to="." method="_quit_game"]
 [connection signal="pressed" from="QuitPopup/Confirm Quit/VBoxContainer/HBoxContainer/Back" to="ColorRect" method="hide"]
 [connection signal="pressed" from="QuitPopup/Confirm Quit/VBoxContainer/HBoxContainer/Back" to="QuitPopup" method="hide"]
