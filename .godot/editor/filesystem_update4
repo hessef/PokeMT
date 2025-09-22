@@ -1,1 +1,6 @@
 res://Scenes/MainMenu.tscn
+res://UI/MainMenu.gd
+res://UI/version_number.gd
+res://Enumerations/Enums.gd
+res://Enumerations/UIEnums.gd
+res://metadata.gd

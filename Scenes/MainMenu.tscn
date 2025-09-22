@@ -1,10 +1,173 @@
-[gd_scene format=3 uid="uid://b06vsf41gn8xj"]
+[gd_scene load_steps=4 format=3 uid="uid://b06vsf41gn8xj"]
 
-[node name="MarginContainer" type="MarginContainer"]
+[ext_resource type="Script" uid="uid://f5nqil686nn6" path="res://UI/MainMenu.gd" id="1_tt5f1"]
+[ext_resource type="Script" uid="uid://b74d838q084kl" path="res://UI/version_number.gd" id="2_853f1"]
+[ext_resource type="Texture2D" uid="uid://81rfvepm121o" path="res://UI/Assets/Misc/Perspicacious_Entertainment.png" id="3_8saeu"]
+
+[node name="Window" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tt5f1")
+
+[node name="Menu" type="MarginContainer" parent="."]
+layout_mode = 2
 theme_override_constants/margin_left = 120
 theme_override_constants/margin_top = 80
 theme_override_constants/margin_right = 120
 theme_override_constants/margin_bottom = 80
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Main" type="HBoxContainer" parent="Menu"]
+visible = false
 layout_mode = 2
+
+[node name="Left Side" type="VBoxContainer" parent="Menu/Main"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+
+[node name="Name Container" type="MarginContainer" parent="Menu/Main/Left Side"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 50
+
+[node name="Game Name" type="RichTextLabel" parent="Menu/Main/Left Side/Name Container"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+text = "PokeMT"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="Button Container" type="MarginContainer" parent="Menu/Main/Left Side"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 60
+
+[node name="Menu Buttons" type="VBoxContainer" parent="Menu/Main/Left Side/Button Container"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Play Button" type="Button" parent="Menu/Main/Left Side/Button Container/Menu Buttons"]
+layout_mode = 2
+action_mode = 0
+text = "PLAY"
+
+[node name="Team" type="Button" parent="Menu/Main/Left Side/Button Container/Menu Buttons"]
+layout_mode = 2
+action_mode = 0
+text = "TEAMS"
+
+[node name="Options Button" type="Button" parent="Menu/Main/Left Side/Button Container/Menu Buttons"]
+layout_mode = 2
+action_mode = 0
+text = "OPTIONS"
+
+[node name="Credits Button" type="Button" parent="Menu/Main/Left Side/Button Container/Menu Buttons"]
+layout_mode = 2
+action_mode = 0
+text = "CREDITS"
+
+[node name="Quit Button" type="Button" parent="Menu/Main/Left Side/Button Container/Menu Buttons"]
+layout_mode = 2
+action_mode = 0
+text = "QUIT"
+
+[node name="Right Side" type="VBoxContainer" parent="Menu/Main"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+
+[node name="Version Number" type="Label" parent="Menu/Main/Right Side"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Ver. x.x.x.x"
+horizontal_alignment = 2
+vertical_alignment = 2
+script = ExtResource("2_853f1")
+
+[node name="Play" type="HBoxContainer" parent="Menu"]
+visible = false
+layout_mode = 2
+
+[node name="Team" type="HBoxContainer" parent="Menu"]
+visible = false
+layout_mode = 2
+
+[node name="Options" type="HBoxContainer" parent="Menu"]
+visible = false
+layout_mode = 2
+
+[node name="Credits" type="HBoxContainer" parent="Menu"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Menu/Credits"]
+layout_mode = 2
+texture = ExtResource("3_8saeu")
+expand_mode = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Menu/Credits"]
+layout_mode = 2
+fit_content = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 2
+color = Color(0.23392546, 0.23392546, 0.23392543, 0.5882353)
+
+[node name="QuitPopup" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Confirm Quit" type="MarginContainer" parent="QuitPopup"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="QuitPopup/Confirm Quit"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="QuitPopup/Confirm Quit/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Do you wish to quit the game?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="QuitPopup/Confirm Quit/VBoxContainer"]
+layout_mode = 2
+
+[node name="Quit" type="Button" parent="QuitPopup/Confirm Quit/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+action_mode = 0
+text = "QUIT"
+
+[node name="Back" type="Button" parent="QuitPopup/Confirm Quit/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+action_mode = 0
+text = "NO WAIT HOLD ON"
+
+[connection signal="from_credits" from="." to="Menu/Credits" method="hide"]
+[connection signal="from_options" from="." to="Menu/Options" method="hide"]
+[connection signal="from_play" from="." to="Menu/Play" method="hide"]
+[connection signal="from_quit" from="." to="ColorRect" method="hide"]
+[connection signal="from_quit" from="." to="QuitPopup" method="hide"]
+[connection signal="from_team" from="." to="Menu/Team" method="hide"]
+[connection signal="pressed" from="Menu/Main/Left Side/Button Container/Menu Buttons/Play Button" to="." method="_start_game"]
+[connection signal="pressed" from="Menu/Main/Left Side/Button Container/Menu Buttons/Team" to="." method="_set_window" binds= [2]]
+[connection signal="pressed" from="Menu/Main/Left Side/Button Container/Menu Buttons/Options Button" to="." method="_set_window" binds= [3]]
+[connection signal="pressed" from="Menu/Main/Left Side/Button Container/Menu Buttons/Credits Button" to="." method="_set_window" binds= [4]]
+[connection signal="pressed" from="Menu/Main/Left Side/Button Container/Menu Buttons/Quit Button" to="ColorRect" method="show"]
+[connection signal="pressed" from="Menu/Main/Left Side/Button Container/Menu Buttons/Quit Button" to="QuitPopup" method="show"]
+[connection signal="pressed" from="Menu/Main/Left Side/Button Container/Menu Buttons/Quit Button" to="." method="_set_window" binds= [5]]
+[connection signal="pressed" from="QuitPopup/Confirm Quit/VBoxContainer/HBoxContainer/Quit" to="." method="_quit_game"]
+[connection signal="pressed" from="QuitPopup/Confirm Quit/VBoxContainer/HBoxContainer/Back" to="ColorRect" method="hide"]
+[connection signal="pressed" from="QuitPopup/Confirm Quit/VBoxContainer/HBoxContainer/Back" to="QuitPopup" method="hide"]
+[connection signal="pressed" from="QuitPopup/Confirm Quit/VBoxContainer/HBoxContainer/Back" to="." method="_set_window" binds= [0]]
