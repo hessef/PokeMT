@@ -12,7 +12,7 @@ class_name ailment_skill
 ##constructor class, takes enum as argument
 func _init(id:Name, debug:=Debug.NONE):
 	#get data from database
-	var data = AuxFunctions.GetData(OType.Skill, id)
+	var data = AuxFunc.GetData(OType.Skill, id)
 	
 	#region SET INHERITED TRAITS
 	ID			= Name[data['id']]

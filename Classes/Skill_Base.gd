@@ -29,7 +29,7 @@ const Stages	= BalanceEnum.stat_stages
 #endregion
 
 #region IMPORT FUNCTIONS
-var AuxFunctions	:= AuxiliaryFunctions.new()
+
 #endregion
 
 #region PARAMETERS

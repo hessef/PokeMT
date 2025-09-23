@@ -27,6 +27,7 @@ Demons="*res://Enumerations/Demons.gd"
 Balance="*res://Enumerations/Balance.gd"
 AuxFunc="*res://HelperFunctions/AuxiliaryFunctions.gd"
 SaveLoad="*res://HelperFunctions/SaveLoad.gd"
+Metadata="*res://metadata.gd"
 
 [display]
 

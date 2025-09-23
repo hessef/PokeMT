@@ -8,6 +8,13 @@ const Race = Demons.demons
 const Skill = Skills.skills
 #endregion
 
+#region GLOBAL VARIABLES
+@export var settings = {	"snd_master":	80,
+							"snd_music":	80,
+							"snd_effects":	80,
+							"snd_ui_sfx":	80}
+#endregion
+
 #region BUILD INFORMATION
 const game_version = "0.0.0.1"
 #endregion

@@ -5,6 +5,10 @@ extends Node
 @export var previous_menu: UI_Enums.MainMenu
 #endregion
 
+#region IMPORT FUNCTIONS
+
+#endregion
+
 #region SIGNALS
 signal from_play()
 signal from_team()
@@ -12,7 +16,20 @@ signal from_options()
 signal from_credits()
 signal from_quit()
 signal to_main()
+signal change_snd_master()
+signal change_snd_music()
+signal change_snd_sfx()
+signal change_snd_ui_sfx()
 #endregion
+
+##this function handles tasks on application boot up
+func _ready():
+	SaveLoad.LoadSettings()
+	change_snd_master.emit()
+	change_snd_music.emit()
+	change_snd_sfx.emit()
+	change_snd_ui_sfx.emit()
+	
 
 ##this function starts the game
 func _start_game():
@@ -22,6 +39,7 @@ func _start_game():
 
 ##this function ends the game
 func _quit_game():
+	SaveLoad.SaveSettings()
 	get_tree().quit()
 
 ##this function handles non-mouse input
@@ -52,6 +70,7 @@ func back_menu(old_window, new_window):
 			from_team.emit()
 		UI_Enums.MainMenu.Options:
 			from_options.emit()
+			SaveLoad.SaveSettings() #save settings when exiting options menu
 		UI_Enums.MainMenu.Credits:
 			from_credits.emit()
 		UI_Enums.MainMenu.Quit:

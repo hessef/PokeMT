@@ -7,8 +7,11 @@ const Race = Demons.demons
 #endregion
 
 #region FUNCTIONS
-var md = metadata.new()
-var AuxFunctions = AuxiliaryFunctions.new()
+
+#endregion
+
+#region CONSTANTS
+const settings_name = "user://pokemt.cfg"
 #endregion
 
 ##save data. Returns true if successful, false otherwise
@@ -26,7 +29,7 @@ func SaveDmn(target):
 		# Store the save data
 		var save_file = FileAccess.open(save_name, FileAccess.WRITE)
 		#serialize data
-		var save_data := {	"Ver":md.game_version,
+		var save_data := {	"Ver":Metadata.game_version,
 							"Race": target.ID,
 							"Name": target.disp_name,
 							"Nickname": target.nickname,
@@ -87,6 +90,31 @@ func LoadDmn(target):
 			#set moves
 			output.move_pool.clear()
 			for move in data["Skills"]:
-				output.move_pool.append(AuxFunctions.BuildSkill(move))
+				output.move_pool.append(AuxFunc.BuildSkill(move))
 			#return object
 			return output
+
+##this function handles saving settings data
+func SaveSettings():
+	#verify that name is available
+	if not FileAccess.file_exists(settings_name):
+		print("creating new save...")
+	else:
+		print("overwriting old save...")
+		#delete old file and replace with new
+		DirAccess.remove_absolute(settings_name)
+	
+	#access and write data
+	var save_file = FileAccess.open(settings_name, FileAccess.WRITE)
+	save_file.store_var(Metadata.settings, true)
+
+##this function handles loading settings data
+func LoadSettings():
+	if FileAccess.file_exists(settings_name):
+		var file = FileAccess.open(settings_name, FileAccess.READ)
+		var data = file.get_var(true)
+		#set settings accordingly
+		for entry in Metadata.settings:
+			Metadata.settings[entry] = data[entry]
+	else:
+		SaveSettings()

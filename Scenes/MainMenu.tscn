@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b06vsf41gn8xj"]
+[gd_scene load_steps=7 format=3 uid="uid://b06vsf41gn8xj"]
 
 [ext_resource type="Script" uid="uid://f5nqil686nn6" path="res://UI/MainMenu.gd" id="1_tt5f1"]
 [ext_resource type="Script" uid="uid://b74d838q084kl" path="res://UI/version_number.gd" id="2_853f1"]
 [ext_resource type="Texture2D" uid="uid://81rfvepm121o" path="res://UI/Assets/Misc/Perspicacious_Entertainment.png" id="3_8saeu"]
+[ext_resource type="Script" uid="uid://tpu0x2o1h4he" path="res://UI/setting_slider.gd" id="3_8um5k"]
 [ext_resource type="Script" uid="uid://cj5dig47ok7u" path="res://UI/BarPercent.gd" id="3_df05h"]
-[ext_resource type="Script" uid="uid://ccruj3qx1n12b" path="res://Scenes/CreditsText.gd" id="4_ghw46"]
+[ext_resource type="Script" uid="uid://ccruj3qx1n12b" path="res://UI/CreditsText.gd" id="4_ghw46"]
 
 [node name="Window" type="MarginContainer"]
 anchors_preset = 15
@@ -22,7 +23,6 @@ theme_override_constants/margin_right = 120
 theme_override_constants/margin_bottom = 80
 
 [node name="Main" type="HBoxContainer" parent="Menu"]
-visible = false
 layout_mode = 2
 
 [node name="Left Side" type="VBoxContainer" parent="Menu/Main"]
@@ -99,6 +99,7 @@ visible = false
 layout_mode = 2
 
 [node name="Options" type="HBoxContainer" parent="Menu"]
+visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu/Options"]
@@ -139,12 +140,13 @@ layout_mode = 2
 text = "Master"
 horizontal_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Master"]
+[node name="snd_master" type="HSlider" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Master"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 1
 value = 80.0
 ticks_position = 3
+script = ExtResource("3_8um5k")
 
 [node name="Label2" type="Label" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Master"]
 layout_mode = 2
@@ -160,12 +162,13 @@ layout_mode = 2
 text = "Music"
 horizontal_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Music"]
+[node name="snd_music" type="HSlider" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Music"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 1
 value = 80.0
 ticks_position = 3
+script = ExtResource("3_8um5k")
 
 [node name="Label2" type="Label" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Music"]
 layout_mode = 2
@@ -181,12 +184,13 @@ layout_mode = 2
 text = "Battle SFX"
 horizontal_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Sound Effects"]
+[node name="snd_effects" type="HSlider" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Sound Effects"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 1
 value = 80.0
 ticks_position = 3
+script = ExtResource("3_8um5k")
 
 [node name="Label2" type="Label" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Sound Effects"]
 layout_mode = 2
@@ -202,12 +206,13 @@ layout_mode = 2
 text = "UI SFX	"
 horizontal_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/UI Effects"]
+[node name="snd_ui_sfx" type="HSlider" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/UI Effects"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 1
 value = 80.0
 ticks_position = 3
+script = ExtResource("3_8um5k")
 
 [node name="Label2" type="Label" parent="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/UI Effects"]
 layout_mode = 2
@@ -284,6 +289,10 @@ size_flags_horizontal = 3
 action_mode = 0
 text = "NO WAIT HOLD ON"
 
+[connection signal="change_snd_master" from="." to="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Master/snd_master" method="_change_slider"]
+[connection signal="change_snd_music" from="." to="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Music/snd_music" method="_change_slider"]
+[connection signal="change_snd_sfx" from="." to="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Sound Effects/snd_effects" method="_change_slider"]
+[connection signal="change_snd_ui_sfx" from="." to="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/UI Effects/snd_ui_sfx" method="_change_slider"]
 [connection signal="from_credits" from="." to="Menu/Credits" method="hide"]
 [connection signal="from_options" from="." to="Menu/Options" method="hide"]
 [connection signal="from_play" from="." to="Menu/Play" method="hide"]
@@ -305,10 +314,14 @@ text = "NO WAIT HOLD ON"
 [connection signal="pressed" from="Menu/Options/VBoxContainer/Button" to="Menu/Main" method="show"]
 [connection signal="pressed" from="Menu/Options/VBoxContainer/Button" to="Menu/Options" method="hide"]
 [connection signal="pressed" from="Menu/Options/VBoxContainer/Button" to="." method="_set_window" binds= [0]]
-[connection signal="value_changed" from="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Master/HSlider" to="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Master/Label2" method="_update_text"]
-[connection signal="value_changed" from="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Music/HSlider" to="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Music/Label2" method="_update_text"]
-[connection signal="value_changed" from="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Sound Effects/HSlider" to="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Sound Effects/Label2" method="_update_text"]
-[connection signal="value_changed" from="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/UI Effects/HSlider" to="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/UI Effects/Label2" method="_update_text"]
+[connection signal="value_changed" from="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Master/snd_master" to="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Master/snd_master" method="_user_change_slider"]
+[connection signal="value_changed" from="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Master/snd_master" to="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Master/Label2" method="_update_text"]
+[connection signal="value_changed" from="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Music/snd_music" to="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Music/snd_music" method="_user_change_slider"]
+[connection signal="value_changed" from="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Music/snd_music" to="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Music/Label2" method="_update_text"]
+[connection signal="value_changed" from="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Sound Effects/snd_effects" to="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Sound Effects/snd_effects" method="_user_change_slider"]
+[connection signal="value_changed" from="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Sound Effects/snd_effects" to="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/Sound Effects/Label2" method="_update_text"]
+[connection signal="value_changed" from="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/UI Effects/snd_ui_sfx" to="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/UI Effects/snd_ui_sfx" method="_user_change_slider"]
+[connection signal="value_changed" from="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/UI Effects/snd_ui_sfx" to="Menu/Options/PanelContainer/Options List/PanelContainer/VBoxContainer/UI Effects/Label2" method="_update_text"]
 [connection signal="pressed" from="Menu/Credits/VBoxContainer/Button" to="Menu/Main" method="show"]
 [connection signal="pressed" from="Menu/Credits/VBoxContainer/Button" to="Menu/Credits" method="hide"]
 [connection signal="pressed" from="Menu/Credits/VBoxContainer/Button" to="." method="_set_window" binds= [0]]
