@@ -98,6 +98,9 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
+[node name="TeamsList" type="VBoxContainer" parent="Menu/Team"]
+layout_mode = 2
+
 [node name="Options" type="HBoxContainer" parent="Menu"]
 visible = false
 layout_mode = 2
