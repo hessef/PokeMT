@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bs3q3p0x8gsqi"]
+
+[node name="UiTestbench" type="Node2D"]
+
+[node name="DemonStatScreenBase" type="PanelContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0

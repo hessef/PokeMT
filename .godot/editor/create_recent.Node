@@ -1,14 +1,14 @@
-VBoxContainer
 PanelContainer
+VBoxContainer
+HBoxContainer
+Panel
 Label
 HSlider
-HBoxContainer
 PopupMenu
 MenuBar
 Button
 RichTextLabel
 TextureRect
-Panel
 ColorRect
 MarginContainer
 PopupPanel

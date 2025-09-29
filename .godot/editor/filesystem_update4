@@ -1,2 +1,1 @@
-res://Scenes/MainMenu.tscn
-res://UI/DemonStatusScreen.gd
+res://TestEnvironments/DevTools/UITestbench.tscn
